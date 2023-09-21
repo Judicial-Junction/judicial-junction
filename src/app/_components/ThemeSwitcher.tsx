@@ -1,5 +1,6 @@
 // app/components/ThemeSwitcher.tsx
 'use client';
+import { MoonFilledIcon, SunFilledIcon } from '@/app/_components/icons';
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -14,12 +15,17 @@ export function ThemeSwitcher() {
 
 	if (!mounted) return null;
 
+	const onChange = () => {
+		theme === 'light' ? setTheme('dark') : setTheme('light');
+	};
+
 	return (
-		<div>
-			The current theme is: {theme}
-            <div></div>
-			<button onClick={() => setTheme('light')}>Light Mode</button>
-			<button onClick={() => setTheme('dark')}>Dark Mode</button>
+		<div onClick={onChange}>
+			{theme == 'dark' ? (
+				<SunFilledIcon size={24} />
+			) : (
+				<MoonFilledIcon size={24} />
+			)}
 		</div>
 	);
 }
