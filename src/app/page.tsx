@@ -1,7 +1,7 @@
 import { serverTrpc } from '@/server/trpc-caller';
 
 export default async function Home() {
-	const test = await serverTrpc.greeting("hello");
+	const test = await serverTrpc.greeting('hello');
 
 	return (
 		<>

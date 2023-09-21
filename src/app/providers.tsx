@@ -6,14 +6,12 @@ import { httpBatchLink } from '@trpc/client';
 import React, { useState } from 'react';
 
 function getBaseUrl() {
-	if (typeof window !== "undefined")
-	  return "";
+	if (typeof window !== 'undefined') return '';
 
-	if (process.env.VERCEL_URL)
-	  return `https://${process.env.VERCEL_URL}`;
+	if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
 	return `http://localhost:${process.env.PORT ?? 3000}`;
-  }
+}
 
 export function Providers({ children }: { children: React.ReactNode }) {
 	const [queryClient] = useState(() => new QueryClient({}));
