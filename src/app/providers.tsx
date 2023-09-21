@@ -4,6 +4,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
 import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import React, { useState } from 'react';
 
 function getBaseUrl() {
@@ -29,7 +30,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
 		<trpc.Provider client={trpcClient} queryClient={queryClient}>
 			<QueryClientProvider client={queryClient}>
 				<SessionProvider>
-					<NextUIProvider>{children}</NextUIProvider>
+					<NextUIProvider>
+						<NextThemesProvider
+							attribute="class"
+							defaultTheme="light"
+						>
+							{children}
+						</NextThemesProvider>
+					</NextUIProvider>
 				</SessionProvider>
 			</QueryClientProvider>
 		</trpc.Provider>
