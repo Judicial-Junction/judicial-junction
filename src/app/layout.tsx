@@ -1,8 +1,8 @@
 import { fontSans } from '@/config/font';
+import '@/styles/globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
 import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -10,6 +10,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
 	title: 'Judicial Junction',
 	description: 'All your legal needs in one place.',
+	themeColor: [
+		{ media: '(prefers-color-scheme: light)', color: 'white' },
+		{ media: '(prefers-color-scheme: dark)', color: 'black' },
+	],
 };
 
 export default function RootLayout({
@@ -20,7 +24,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head />
-			<body className={clsx(fontSans.variable)}>
+			<body
+				className={clsx(
+					'min-h-screen bg-background font-sans antialiased',
+					fontSans.variable,
+				)}
+			>
 				<Providers>{children}</Providers>
 			</body>
 		</html>
