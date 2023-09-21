@@ -3,6 +3,7 @@ import { trpc } from '@/app/_trpc/client';
 import { NextUIProvider } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
+import { SessionProvider } from 'next-auth/react';
 import React, { useState } from 'react';
 
 function getBaseUrl() {
@@ -27,7 +28,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<trpc.Provider client={trpcClient} queryClient={queryClient}>
 			<QueryClientProvider client={queryClient}>
-				<NextUIProvider>{children}</NextUIProvider>
+				<SessionProvider>
+					<NextUIProvider>{children}</NextUIProvider>
+				</SessionProvider>
 			</QueryClientProvider>
 		</trpc.Provider>
 	);
