@@ -20,8 +20,8 @@ const config: Config = {
 					colors: {
 						default: '#F5F5F5',
 						primary: '#F2EAD3',
-						secondary: '#3F2305',
-						warning: '#DFD7BF',
+						secondary: '#DFD7BF',
+						warning: '#3F2305',
 					},
 				},
 				dark: {
