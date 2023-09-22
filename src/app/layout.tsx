@@ -3,8 +3,8 @@ import '@/styles/globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Navbar from './_components/Navbar/navbar';
 import { Providers } from './providers';
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -30,7 +30,12 @@ export default function RootLayout({
 					fontSans.variable,
 				)}
 			>
-				<Providers>{children}</Providers>
+				<Providers>
+					<div className="min-h-screen flex flex-col">
+						<Navbar />
+						{children}
+					</div>
+				</Providers>
 			</body>
 		</html>
 	);
