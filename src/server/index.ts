@@ -1,17 +1,6 @@
 import { z } from 'zod';
 import { publicProcedure, router } from './trpc';
-
-interface SearchField {
-	file_name: string[];
-	file_summary: string[];
-}
-
-interface SearchResponse {
-	_id: string;
-	_index: string;
-	_score: number;
-	fields: SearchField;
-}
+import { SearchResponse, removeDuplicatesByScore } from './utils';
 
 export const appRouter = router({
 	greeting: publicProcedure.input(z.string()).query(({ input }) => {
@@ -39,8 +28,8 @@ export const appRouter = router({
 					body: raw,
 				},
 			);
-			const res = await response.json();
-			return res as SearchResponse[];
+			const res = (await response.json()) as SearchResponse[];
+			return removeDuplicatesByScore(res);
 		}),
 });
 
