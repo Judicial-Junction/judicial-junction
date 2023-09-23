@@ -63,28 +63,26 @@ export default function SearchText() {
 							<div className="flex my-2 justify-center">
 								<p className="mr-2 font-bold">Relevant Cases</p>
 							</div>
-							{result.fields.file_name.map((file, index) => (
-								<div className="flex my-2" key={index}>
-									<p className="font-bold">{index + 1}.</p>
-									<p className="">{file}</p>
-								</div>
-							))}
-							<hr className=" my-2   invisible" />
+
+							<div className="flex my-2" key={index}>
+								<p className="font-bold">{index + 1}.</p>
+								<p className="">{result.fields.file_name[0]}</p>
+							</div>
+
+							<hr className="my-2 invisible" />
 							<div className="flex my-2 justify-center">
 								<p className="mr-2 font-bold">
 									Summaries of Cases
 								</p>
 							</div>
-							{result.fields.file_summary.map(
-								(summary, index) => (
-									<div className="flex my-2" key={index}>
-										<p className="font-bold">
-											{index + 1}.
-										</p>
-										<p className="">{summary}</p>
-									</div>
-								),
-							)}
+
+							<div className="flex my-2" key={index}>
+								<p className="font-bold">{index + 1}.</p>
+								<p className="">
+									{result.fields.file_summary[0]}
+								</p>
+							</div>
+
 							<Divider className="my-4" />
 						</div>
 					))}
