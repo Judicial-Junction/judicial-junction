@@ -57,8 +57,8 @@ export default function Navbar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link href="/chat" color="foreground">
-						Chat
+					<Link href="/search" color="foreground">
+						Search
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
