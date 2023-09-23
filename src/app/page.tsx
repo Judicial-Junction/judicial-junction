@@ -1,6 +1,5 @@
-import { Link } from '@nextui-org/link';
-import { button as buttonStyles } from '@nextui-org/theme';
 import clsx from 'clsx';
+import LandingButton from './_components/Landing/button';
 import TextAnimation from './_components/Landing/text';
 export default function Home() {
 	return (
@@ -10,16 +9,7 @@ export default function Home() {
 					<TextAnimation />
 				</div>
 				<div className="flex gap-3 mt-4">
-					<Link
-						href={'#'}
-						className={buttonStyles({
-							color: 'secondary',
-							radius: 'full',
-							variant: 'bordered',
-						})}
-					>
-						Get Started
-					</Link>
+					<LandingButton />
 				</div>
 			</section>
 		</>
