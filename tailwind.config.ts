@@ -9,19 +9,25 @@ const config: Config = {
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				opp_primary_light: '#D3DBF2',
+				white: '#ffffff',
+			},
+		},
 	},
 	darkMode: 'class',
 	plugins: [
 		nextui({
+			addCommonColors: true,
 			themes: {
 				light: {
 					layout: {},
 					colors: {
-						default: '#F5F5F5',
-						primary: '#F2EAD3',
-						secondary: '#DFD7BF',
-						warning: '#3F2305',
+						// default: '#F5F5F5',
+						// primary: '#F2EAD3',
+						// secondary: '#DFD7BF',
+						// warning: '#3F2305',
 					},
 				},
 				dark: {
