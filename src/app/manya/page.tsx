@@ -10,7 +10,7 @@ function Manya() {
 						alt="random"
 						className="rounded-lg"
 						width="100"
-                        height='100'
+						height="100"
 					/>
 					<div className="py-4 flex flex-col items-start">
 						<p className="text-black align-middle items-center font-serif">
