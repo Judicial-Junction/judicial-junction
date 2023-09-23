@@ -35,8 +35,7 @@ export function EmptyScreen() {
 							className="h-auto p-0 text-foreground"
 						>
 							<IconArrowRight className="" />
-                            <p className=''>{message.heading}</p>
-							
+							<p className="">{message.heading}</p>
 						</Link>
 					))}
 				</div>
