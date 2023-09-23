@@ -44,7 +44,7 @@ export default function Navbar() {
 	return (
 		<NextUINavbar shouldHideOnScroll isBlurred>
 			<NavbarBrand>
-				<Link color="foreground" className="" href="#">
+				<Link color="foreground" className="" href="/">
 					<AcmeLogo />
 					<p className="font-bold text-inherit">Home</p>
 				</Link>
@@ -57,8 +57,8 @@ export default function Navbar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link href="#" color="foreground">
-						Chat
+					<Link href="/search" color="foreground">
+						Search
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
