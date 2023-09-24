@@ -16,13 +16,34 @@ export default function ChatInput({ case_number }: { case_number: string }) {
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
 				['messages'],
 			);
+
+			let FirstMessage: MessageInterface = {
+				content_message: `Starting chat for Case Number - ${case_number}`,
+				created_by: 'bot',
+			};
+
+			if (previousMessages) {
+				previousMessages = [...previousMessages, FirstMessage];
+			}
+
+			queryClient.setQueryData<MessageInterface[]>(
+				['messages'],
+				previousMessages,
+			);
+
+			previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
+
 			let HumanMessage: MessageInterface = {
 				content_message: query,
 				created_by: 'user',
 			};
+
 			if (previousMessages) {
 				previousMessages = [...previousMessages, HumanMessage];
 			}
+
 			queryClient.setQueryData<MessageInterface[]>(
 				['messages'],
 				previousMessages,
@@ -33,7 +54,7 @@ export default function ChatInput({ case_number }: { case_number: string }) {
 			]);
 
 			let LoadingMessage: MessageInterface = {
-				content_message: 'super secret laoding message',
+				content_message: 'super secret loading message',
 				created_by: 'bot',
 			};
 

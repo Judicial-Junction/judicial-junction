@@ -1,8 +1,8 @@
 import { Avatar } from '@nextui-org/avatar';
+import { Spinner } from '@nextui-org/spinner';
 import { useSession } from 'next-auth/react';
 import React, { FC } from 'react';
 import { MessageInterface } from './Chat';
-import { Spinner } from '@nextui-org/spinner';
 
 interface ChatMessageProps {
 	message: MessageInterface;

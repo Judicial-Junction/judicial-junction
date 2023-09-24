@@ -10,15 +10,16 @@ import { MessageInterface } from './Chat';
 const exampleMessages = [
 	{
 		heading: 'Ask about this case',
-		message: `What is this file about ?`,
+		message: 'What is this file about ?',
 	},
 	{
 		heading: 'Find out specifics in this case',
-		message: 'Summarize the following article for a 2nd grader: \n',
+		message:
+			'Tell me about specific unique specific details about this case',
 	},
 	{
 		heading: 'Find out Judgement',
-		message: `Draft an email to my boss about the following: \n`,
+		message: `WHat is the judgement provided in the case ?`,
 	},
 ];
 
@@ -31,12 +32,50 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
 				['messages'],
 			);
+
+			let FirstMessage: MessageInterface = {
+				content_message: `Starting chat for Case Number - ${case_number}`,
+				created_by: 'bot',
+			};
+
+			if (previousMessages) {
+				previousMessages = [...previousMessages, FirstMessage];
+			}
+
+			queryClient.setQueryData<MessageInterface[]>(
+				['messages'],
+				previousMessages,
+			);
+
+			previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
+
 			let HumanMessage: MessageInterface = {
 				content_message: query,
 				created_by: 'user',
 			};
+
 			if (previousMessages) {
 				previousMessages = [...previousMessages, HumanMessage];
+			}
+
+			queryClient.setQueryData<MessageInterface[]>(
+				['messages'],
+				previousMessages,
+			);
+
+			previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
+
+			let LoadingMessage: MessageInterface = {
+				content_message: 'super secret loading message',
+				created_by: 'bot',
+			};
+
+			if (previousMessages) {
+				previousMessages = [...previousMessages, LoadingMessage];
 			}
 			queryClient.setQueryData<MessageInterface[]>(
 				['messages'],
@@ -47,6 +86,7 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
 				['messages'],
 			);
+			console.log(error);
 			let ErrorMessage: MessageInterface = {
 				content_message: error.message,
 				created_by: 'user',
@@ -63,6 +103,18 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
 				['messages'],
 			);
+
+			previousMessages?.pop();
+
+			queryClient.setQueryData<MessageInterface[]>(
+				['messages'],
+				previousMessages,
+			);
+
+			previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
+
 			let BotMessage: MessageInterface = {
 				content_message: data,
 				created_by: 'bot',
