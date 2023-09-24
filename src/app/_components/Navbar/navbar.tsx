@@ -42,7 +42,7 @@ const links = {
 
 export default function Navbar() {
 	return (
-		<NextUINavbar shouldHideOnScroll isBlurred>
+		<NextUINavbar shouldHideOnScroll isBordered>
 			<NavbarBrand>
 				<Link color="foreground" className="" href="/">
 					<AcmeLogo />
