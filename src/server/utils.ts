@@ -1,6 +1,7 @@
 interface SearchField {
 	file_name: string[];
 	file_summary: string[];
+	case_number: string[];
 }
 
 export interface SearchResponse {
