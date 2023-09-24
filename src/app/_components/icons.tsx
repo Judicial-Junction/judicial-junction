@@ -247,7 +247,6 @@ export const IconArrowElbow: React.FC<IconSvgProps> = (props) => {
 export const ChatIcon: React.FC<IconSvgProps> = (props) => {
 	return (
 		<svg
-			
 			height={60}
 			width={60}
 			viewBox="0 0 1024 1024"
