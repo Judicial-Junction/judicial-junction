@@ -51,11 +51,6 @@ export default function Navbar() {
 			</NavbarBrand>
 
 			<NavbarContent className="hidden sm:flex gap-8" justify="center">
-				<NavbarItem>
-					<Link color="foreground" href="#">
-						Hire
-					</Link>
-				</NavbarItem>
 				<NavbarItem isActive>
 					<Link
 						href="/search"
@@ -67,7 +62,7 @@ export default function Navbar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link color="foreground" href="#">
+					<Link color="foreground" href="/map">
 						Near you
 					</Link>
 				</NavbarItem>
