@@ -70,10 +70,10 @@ export default function SearchText() {
 					mut.data.map((result, index) => (
 						<div
 							key={index}
-							className="flex flex-col bg-opacity-10 my-10 px-10 py-5 rounded-3xl"
+							className="flex flex-col  px-[70px] border-white border-2 bg-opacity-10 my-10 py-5 rounded-3xl"
 						>
-							<div className="flex my-2 justify-center items-center gap-[200px]">
-								<p className="mr-2 font-bold flex-nowrap  justify-center">
+							<div className="flex my-2 justify-between items-center gap-[200px]">
+								<p className="font-semibold underline text-xl flex-nowrap ">
 									Case Number - {result.fields.case_number[0]}
 								</p>
 								<Button
@@ -91,21 +91,22 @@ export default function SearchText() {
 							<hr className="my-2 invisible" />
 
 							<div className="flex my-2 justify-center">
-								<p className="mr-2 font-bold">Case Name</p>
+								<p className=" font-semibold text-xl ">Case Name</p>
 							</div>
 
 							<div
 								className="flex my-2 justify-center"
 								key={index}
 							>
-								<p className="font-bold">{index + 1}.</p>
-								<p className="">{result.fields.file_name[0]}</p>
+								<p className="font-bold">{index + 1}<span> .</span></p>
+								<p className="ml-2">{result.fields.file_name[0]}</p>
 							</div>
 
 							<hr className="my-2 invisible" />
 
 							<div className="flex my-2 justify-center">
-								<p className="mr-2 font-bold">Case Summary</p>
+								<p className="font-semibold text-xl ">Case Summary</p>
+								
 							</div>
 
 							<div className="flex my-2" key={index}>
