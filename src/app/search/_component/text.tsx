@@ -5,6 +5,7 @@ import { Divider } from '@nextui-org/divider';
 import { Textarea } from '@nextui-org/input';
 import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
+import ExampleQuery from './example';
 
 export default function SearchText() {
 	const [input, setinput] = useState('');
@@ -19,12 +20,12 @@ export default function SearchText() {
 
 	return (
 		<>
-			<form onSubmit={HandleSubmit}>
+			<form onSubmit={HandleSubmit} className="flex flex-col items-center overflow-x-hidden">
 				<Textarea
 					minRows={1}
 					color="primary"
 					variant="bordered"
-					className="w-full flex flex-col justify-center items-center h-full"
+					className="overflow-x-hidden h-full "
 					size="lg"
 					value={input}
 					onValueChange={setinput}
@@ -39,6 +40,14 @@ export default function SearchText() {
 					Search
 				</Button>
 			</form>
+
+			{!mut.isSuccess && !mut.isError && !mut.isLoading && (
+				<div className='mt-10 flex'>
+					<p className='font-bold mr-1'>Example Query : </p>
+					<ExampleQuery />
+				</div>
+			)}
+
 			<div className=" mt-10">
 				{mut.isLoading && (
 					<div className="">
