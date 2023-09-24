@@ -46,11 +46,13 @@ export default function Navbar() {
 			<NavbarBrand>
 				<Link color="foreground" className="" href="/">
 					<AcmeLogo />
-					<p className="font-bold text-inherit">Home</p>
 				</Link>
 			</NavbarBrand>
 
-			<NavbarContent className="hidden sm:flex gap-8" justify="center">
+			<NavbarContent
+				className="hidden sm:flex gap-[40px]"
+				justify="center"
+			>
 				<NavbarItem isActive>
 					<Link
 						href="/search"
@@ -58,17 +60,17 @@ export default function Navbar() {
 						className="animate-pulse"
 						aria-current="page"
 					>
-						Search
+						<p className="text-[18px]">Search</p>
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
 					<Link color="foreground" href="/map">
-						Near you
+						<p className="text-[18px]">Near you</p>
 					</Link>
 				</NavbarItem>
 			</NavbarContent>
 
-			<NavbarContent justify="end">
+			<NavbarContent justify="end" className="gap-5">
 				<NavbarItem className="hidden lg:flex">
 					<ThemeSwitcher />
 				</NavbarItem>
