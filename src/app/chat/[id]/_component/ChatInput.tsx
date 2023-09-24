@@ -1,31 +1,16 @@
-import { IconArrowRight } from '@/app/_components/icons';
-import { subtitle, title } from '@/app/_components/primitives';
+import { IconArrowElbow } from '@/app/_components/icons';
 import { trpc } from '@/app/_trpc/client';
 import { Button } from '@nextui-org/button';
-import { Link } from '@nextui-org/link';
+import { Input } from '@nextui-org/input';
 import { useQueryClient } from '@tanstack/react-query';
-import clsx from 'clsx';
+import { useState } from 'react';
 import { MessageInterface } from './Chat';
 
-const exampleMessages = [
-	{
-		heading: 'Ask about this case',
-		message: `What is this file about ?`,
-	},
-	{
-		heading: 'Find out specifics in this case',
-		message: 'Summarize the following article for a 2nd grader: \n',
-	},
-	{
-		heading: 'Find out Judgement',
-		message: `Draft an email to my boss about the following: \n`,
-	},
-];
+export default function ChatInput() {
+    const queryClient = useQueryClient();   
+    const [inputMessage, setinputMessage] = useState('');
 
-export function EmptyScreen() {
-	const queryClient = useQueryClient();
-
-	const newMessageMutation = trpc.documentQuery.useMutation({
+    const newMessageMutation = trpc.documentQuery.useMutation({
         onMutate: async({query, case_number}) => {
             await queryClient.cancelQueries({queryKey: ['messages']})
             let previousMessages = queryClient.getQueryData<MessageInterface[]>(['messages'])
@@ -35,7 +20,7 @@ export function EmptyScreen() {
             }
             queryClient.setQueryData<MessageInterface[]>(['messages'], previousMessages)
         },
-		onError: (error) => {
+        onError: (error) => {
             let previousMessages = queryClient.getQueryData<MessageInterface[]>(['messages'])
             let ErrorMessage: MessageInterface = {'content_message': error.message, 'created_by': 'user'}
             if(previousMessages){
@@ -53,38 +38,30 @@ export function EmptyScreen() {
         },
     })
 
-	const HandleClick = (message:string) => {
-		newMessageMutation.mutate({query: message, case_number: 'aihf'});
-	}
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if(inputMessage!=='') newMessageMutation.mutate({query: inputMessage, case_number: 'aihf'});
+        setinputMessage('')
+    };
 
 	return (
-		<div className="mx-auto max-w-2xl px-4  mt-20">
-			<div className="rounded-lg p-8 text-center">
-				<h1
-					className={clsx(
-						'mb-2 text-3xl font-semibold text-dark dark:text-primary-50',
-					)}
-				>
-					Welcome to Judicial Junction AI Chatbot!
-				</h1>
-				<p className="leading-normal text-muted-foreground">
-					You can start a conversation about the case here
-				</p>
-				<div className="mt-4 flex flex-col space-y-2 ">
-					{exampleMessages.map((message, index) => (
-						<Link
-							onClick={()=>HandleClick(message.message)}
-							key={index}
-							className="h-auto p-0 text-foreground"
-						>
-							<IconArrowRight />
-							<p className=" ml-2 font-bold hover:underline">
-								{message.heading}
-							</p>
-						</Link>
-					))}
-				</div>
+		<>
+			<div className="sticky bottom-1 z-20 bg-opacity-80 backdrop-filter backdrop-blur-md">
+				<form onSubmit={handleSubmit} className="mx-2 gap-3 last:mb-2 md:mx-auto md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+					<Input
+						placeholder="Type your message here"
+						color="primary"
+                        value={inputMessage}
+                        onValueChange={setinputMessage}
+						endContent={
+							<Button isIconOnly variant="light" type="submit">
+								<IconArrowElbow />
+							</Button>
+						}
+					/>
+				</form>
 			</div>
-		</div>
+		</>
 	);
 }

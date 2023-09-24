@@ -31,6 +31,16 @@ export const appRouter = router({
 			const res = (await response.json()) as SearchResponse[];
 			return removeDuplicatesByScore(res);
 		}),
+	documentQuery: publicProcedure
+		.input(
+			z.object({
+				case_number: z.string(),
+				query: z.string()
+			})
+		)
+		.mutation(async ({input}) => {
+			return 'response message by bot';
+		})
 });
 
 export type AppRouter = typeof appRouter;
