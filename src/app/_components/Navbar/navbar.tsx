@@ -56,8 +56,8 @@ export default function Navbar() {
 						Hire
 					</Link>
 				</NavbarItem>
-				<NavbarItem>
-					<Link href="/search" color="foreground">
+				<NavbarItem isActive>
+					<Link href="/search" color="danger" className='animate-pulse' aria-current="page">
 						Search
 					</Link>
 				</NavbarItem>
