@@ -4,6 +4,13 @@ import { button as buttonStyles } from '@nextui-org/theme';
 import { useTheme } from 'next-themes';
 export default function LandingButton() {
 	const { theme, setTheme } = useTheme();
+
+	const customStyles = {
+		fontSize: '16px',
+		width: '180px',
+		height: '60px',
+	};
+
 	return (
 		<>
 			{theme === 'light' ? (
@@ -14,6 +21,7 @@ export default function LandingButton() {
 						radius: 'full',
 						variant: 'ghost',
 					})}
+					style={customStyles}
 				>
 					Get Started
 				</Link>
@@ -25,6 +33,7 @@ export default function LandingButton() {
 						radius: 'full',
 						variant: 'ghost',
 					})}
+					style={customStyles}
 				>
 					Get Started
 				</Link>

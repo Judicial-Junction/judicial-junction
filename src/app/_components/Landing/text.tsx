@@ -15,7 +15,7 @@ export default function TextAnimation() {
 			]}
 			speed={50}
 			omitDeletionAnimation={true}
-			style={{ fontSize: '2.5em', fontWeight: 'bold' }}
+			style={{ fontSize: '2.8em', fontWeight: 'bold' }}
 			repeat={Infinity}
 		/>
 	);
