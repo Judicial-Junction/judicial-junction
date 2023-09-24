@@ -1,9 +1,9 @@
 'use client';
 import { trpc } from '@/app/_trpc/client';
-import { Link } from '@nextui-org/Link';
 import { Button } from '@nextui-org/button';
 import { Divider } from '@nextui-org/divider';
 import { Textarea } from '@nextui-org/input';
+import { Link } from '@nextui-org/link';
 import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
 import ExampleQuery from './example';
