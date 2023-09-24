@@ -20,7 +20,10 @@ export default function SearchText() {
 
 	return (
 		<>
-			<form onSubmit={HandleSubmit} className="flex flex-col items-center overflow-x-hidden">
+			<form
+				onSubmit={HandleSubmit}
+				className="flex flex-col items-center overflow-x-hidden"
+			>
 				<Textarea
 					minRows={1}
 					color="primary"
@@ -42,8 +45,8 @@ export default function SearchText() {
 			</form>
 
 			{!mut.isSuccess && !mut.isError && !mut.isLoading && (
-				<div className='mt-10 flex'>
-					<p className='font-bold mr-1'>Example Query : </p>
+				<div className="mt-10 flex">
+					<p className="font-bold mr-1">Example Query : </p>
 					<ExampleQuery />
 				</div>
 			)}
@@ -74,17 +77,18 @@ export default function SearchText() {
 								<p className="mr-2 font-bold">Case Name</p>
 							</div>
 
-							<div className="flex my-2 justify-center" key={index}>
+							<div
+								className="flex my-2 justify-center"
+								key={index}
+							>
 								<p className="font-bold">{index + 1}.</p>
 								<p className="">{result.fields.file_name[0]}</p>
 							</div>
 
 							<hr className="my-2 invisible" />
-							
+
 							<div className="flex my-2 justify-center">
-								<p className="mr-2 font-bold">
-									Case Summary
-								</p>
+								<p className="mr-2 font-bold">Case Summary</p>
 							</div>
 
 							<div className="flex my-2" key={index}>

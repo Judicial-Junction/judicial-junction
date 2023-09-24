@@ -1,7 +1,7 @@
 import { TypeAnimation } from 'react-type-animation';
 export default function ExampleQuery() {
-    return (
-        <TypeAnimation
+	return (
+		<TypeAnimation
 			sequence={[
 				'Tell me about previous Loan fraud ',
 				1000,
@@ -11,9 +11,9 @@ export default function ExampleQuery() {
 				1000,
 			]}
 			speed={50}
-            deletionSpeed={75}
+			deletionSpeed={75}
 			// omitDeletionAnimation={true}
 			repeat={Infinity}
 		/>
-    )
+	);
 }

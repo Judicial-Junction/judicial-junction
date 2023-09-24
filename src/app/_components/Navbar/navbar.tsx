@@ -57,7 +57,12 @@ export default function Navbar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem isActive>
-					<Link href="/search" color="danger" className='animate-pulse' aria-current="page">
+					<Link
+						href="/search"
+						color="danger"
+						className="animate-pulse"
+						aria-current="page"
+					>
 						Search
 					</Link>
 				</NavbarItem>
