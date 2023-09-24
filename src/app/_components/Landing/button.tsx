@@ -1,14 +1,14 @@
 'use client';
-import { useTheme } from 'next-themes';
 import { Link } from '@nextui-org/link';
 import { button as buttonStyles } from '@nextui-org/theme';
+import { useTheme } from 'next-themes';
 export default function LandingButton() {
 	const { theme, setTheme } = useTheme();
 	return (
 		<>
 			{theme === 'light' ? (
 				<Link
-					href={'#'}
+					href={'/search'}
 					className={buttonStyles({
 						color: 'primary',
 						radius: 'full',
@@ -19,7 +19,7 @@ export default function LandingButton() {
 				</Link>
 			) : (
 				<Link
-					href={'#'}
+					href={'/search'}
 					className={buttonStyles({
 						color: 'danger',
 						radius: 'full',
