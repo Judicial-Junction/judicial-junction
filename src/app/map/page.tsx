@@ -1,29 +1,28 @@
-'use client';
-import { useEffect, useState } from 'react';
+'use client'
+import { Button } from "@nextui-org/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@nextui-org/dropdown";
+import clsx from "clsx";
+import { title } from "../_components/primitives";
 export default function Map() {
-	const [iframeHeight, setIframeHeight] = useState(800);
-
-	useEffect(() => {
-		const updateIframeHeight = () => {
-			const windowHeight =
-				window.innerHeight || document.documentElement.clientHeight;
-			setIframeHeight(windowHeight);
-		};
-
-		window.addEventListener('resize', updateIframeHeight);
-
-		updateIframeHeight();
-
-		return () => {
-			window.removeEventListener('resize', updateIframeHeight);
-		};
-	}, []);
-
 	return (
-		<iframe
-			src="https://delhi-plot-kh6ujptkyvimoj3tjzrs2t.streamlit.app/?embed=true&embed_options=dark_theme&embed_options=disable_scrolling&"
-			height={iframeHeight}
-			style={{ width: '100%', border: 'none' }}
-		/>
+		<>
+		<div className="flex flex-col pt-8 items-center ">
+			<h1 className={clsx(" mb-4 text", title())}>Select A City</h1>
+			<Dropdown>
+				<DropdownTrigger>
+					<Button variant="bordered" size="md" color="danger">
+						Choose city
+					</Button>
+				</DropdownTrigger>
+				<DropdownMenu>
+					<DropdownItem key='Delhi'>Delhi</DropdownItem>
+					<DropdownItem key='Hyderabad'>Hyderabad</DropdownItem>
+					<DropdownItem key='Mumbai'>Mumbai</DropdownItem>
+				</DropdownMenu>
+			</Dropdown>
+			
+		</div>
+			
+		</>
 	);
 }
