@@ -43,17 +43,14 @@ const City_plot = ({ City }: { City: string }) => {
 						type: 'choroplethmapbox',
 						geojson: delhi_geojson,
 						featureidkey: 'properties.Dist_Name',
-						color: 'Pincode',
-                        colorbar:{
-                            bgcolor: '#0e1117',
-                            outlinewidth: 0,
-                            bordercolor: '#0e1117',
-                            title: {
-                                text: 'Pincode',
-                                side: 'left',
-                                 
-                            }
-                        },
+						colorbar: {
+							bgcolor: '#0e1117',
+							outlinewidth: 0,
+							bordercolor: '#0e1117',
+							title: {
+								text: 'Pincode',
+							},
+						},
 						locations: District,
 						color_continuous_scale: 'OrRd',
 						z: Pincode,
@@ -89,12 +86,7 @@ const City_plot = ({ City }: { City: string }) => {
 		return <div>Loading data...</div>;
 	}
 
-	const config = {
-		mapboxAccessToken:
-			process.env.mapboxAccessToken,
-	};
-
-	return <Plot data={data} layout={layout}  />;
+	return <Plot data={data} layout={layout} />;
 };
 
 export default City_plot;
