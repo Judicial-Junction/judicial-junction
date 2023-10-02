@@ -94,7 +94,7 @@ const City_plot = ({ City }: { City: string }) => {
 			process.env.mapboxAccessToken,
 	};
 
-	return <Plot data={data} layout={layout} config={config} />;
+	return <Plot data={data} layout={layout}  />;
 };
 
 export default City_plot;
