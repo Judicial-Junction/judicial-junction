@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { createTRPCRouter, publicProcedure } from '../trpc';
+import { createTRPCRouter, publicProcedure } from '../../trpc';
 import { SearchResponse, removeDuplicatesByScore } from './utils';
 
 export const SearchPageRouter = createTRPCRouter({
