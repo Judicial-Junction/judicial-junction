@@ -1,3 +1,4 @@
+import { env } from '@/env.mjs';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { NextAuthOptions } from 'next-auth';
 import { Adapter } from 'next-auth/adapters';
@@ -8,8 +9,8 @@ export const authConfig: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma) as Adapter,
 	providers: [
 		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID as string,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+			clientId: env.GOOGLE_CLIENT_ID,
+			clientSecret: env.GOOGLE_CLIENT_SECRET,
 		}),
 	],
 	callbacks: {

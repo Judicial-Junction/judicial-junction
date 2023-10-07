@@ -6,6 +6,7 @@ import { httpBatchLink } from '@trpc/client';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import React, { useState } from 'react';
+import SuperJSON from 'superjson';
 
 function getBaseUrl() {
 	if (typeof window !== 'undefined') return '';
@@ -24,6 +25,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 					url: `${getBaseUrl()}/api/trpc`,
 				}),
 			],
+			transformer: SuperJSON,
 		}),
 	);
 	return (
