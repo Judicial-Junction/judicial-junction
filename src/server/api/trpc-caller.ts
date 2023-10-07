@@ -1,8 +1,6 @@
 import 'server-only';
 
 import { appRouter } from '.';
+import { createContext } from './context';
 
-export const serverTrpc = appRouter.createCaller({
-	eventServer: { trigger: async () => {} },
-	session: { user: null },
-});
+export const serverTrpc = appRouter.createCaller(await createContext());
