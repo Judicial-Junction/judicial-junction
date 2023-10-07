@@ -11,7 +11,7 @@ import ExampleQuery from './example';
 import { ChatIcon } from '@/app/_components/icons';
 
 export default function SearchText() {
-	const mut = trpc.search.useMutation();
+	const mut = trpc.SearchPage.query.useMutation();
 	const [input, setinput] = useState('');
 	// const [cases, setcases] = useState((mut.data || []) as any[]);
 

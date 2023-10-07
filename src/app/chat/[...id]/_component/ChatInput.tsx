@@ -10,7 +10,7 @@ export default function ChatInput({ case_number }: { case_number: string }) {
 	const queryClient = useQueryClient();
 	const [inputMessage, setinputMessage] = useState('');
 
-	const newMessageMutation = trpc.documentQuery.useMutation({
+	const newMessageMutation = trpc.documentQuery.chat.useMutation({
 		onMutate: async ({ query, case_number }) => {
 			await queryClient.cancelQueries({ queryKey: ['messages'] });
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
