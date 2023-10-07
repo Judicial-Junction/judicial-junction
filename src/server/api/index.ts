@@ -1,6 +1,6 @@
 import { z } from 'zod';
+import { SearchResponse, removeDuplicatesByScore } from '../utils';
 import { publicProcedure, router } from './trpc';
-import { SearchResponse, removeDuplicatesByScore } from './utils';
 
 export const appRouter = router({
 	greeting: publicProcedure.input(z.string()).query(({ input }) => {
