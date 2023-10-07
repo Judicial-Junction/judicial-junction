@@ -10,7 +10,7 @@ export const authConfig: NextAuthOptions = {
 	providers: [
 		GoogleProvider({
 			clientId: env.GOOGLE_CLIENT_ID,
-			clientSecret: env.GOOGLE_CLIENT_SECRET
+			clientSecret: env.GOOGLE_CLIENT_SECRET,
 		}),
 	],
 	callbacks: {

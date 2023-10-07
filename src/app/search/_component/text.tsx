@@ -91,22 +91,30 @@ export default function SearchText() {
 							<hr className="my-2 invisible" />
 
 							<div className="flex my-2 justify-center">
-								<p className=" font-semibold text-xl ">Case Name</p>
+								<p className=" font-semibold text-xl ">
+									Case Name
+								</p>
 							</div>
 
 							<div
 								className="flex my-2 justify-center"
 								key={index}
 							>
-								<p className="font-bold">{index + 1}<span> .</span></p>
-								<p className="ml-2">{result.fields.file_name[0]}</p>
+								<p className="font-bold">
+									{index + 1}
+									<span> .</span>
+								</p>
+								<p className="ml-2">
+									{result.fields.file_name[0]}
+								</p>
 							</div>
 
 							<hr className="my-2 invisible" />
 
 							<div className="flex my-2 justify-center">
-								<p className="font-semibold text-xl ">Case Summary</p>
-								
+								<p className="font-semibold text-xl ">
+									Case Summary
+								</p>
 							</div>
 
 							<div className="flex my-2" key={index}>
