@@ -10,6 +10,7 @@ import {
 	Navbar as NextUINavbar,
 } from '@nextui-org/navbar';
 import clsx from 'clsx';
+import NextLink from 'next/link';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import { AcmeLogo } from '../icons';
 import AuthButton from './AuthButton';
@@ -19,7 +20,7 @@ export default function Navbar() {
 	return (
 		<NextUINavbar shouldHideOnScroll>
 			<NavbarBrand className="hidden sm:flex">
-				<Link color="foreground" className="" href="/">
+				<Link color="foreground" className="" href="/" as={NextLink}>
 					<AcmeLogo />
 				</Link>
 			</NavbarBrand>
@@ -30,7 +31,12 @@ export default function Navbar() {
 
 			<NavbarContent className="hidden sm:flex  pl-52" justify="center">
 				<NavbarItem>
-					<Link href="#" color="foreground" aria-current="page">
+					<Link
+						href="#"
+						color="foreground"
+						aria-current="page"
+						as={NextLink}
+					>
 						<p className="text-[18px]">About</p>
 					</Link>
 				</NavbarItem>
@@ -40,7 +46,7 @@ export default function Navbar() {
 			</NavbarContent>
 
 			<NavbarContent className="sm:hidden pr-3" justify="center">
-				<Link color="foreground" className="" href="/">
+				<Link color="foreground" className="" href="/" as={NextLink}>
 					<NavbarBrand>
 						<AcmeLogo />
 						<p className="font-bold text-inherit">Judicial</p>
@@ -69,6 +75,7 @@ export default function Navbar() {
 							}
 							href={item.href}
 							size="lg"
+							as={NextLink}
 						>
 							{item.label}
 						</Link>
