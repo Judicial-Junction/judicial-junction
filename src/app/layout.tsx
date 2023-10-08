@@ -1,19 +1,26 @@
 import { fontSans } from '@/config/font';
+import { siteConfig } from '@/config/site';
 import '@/styles/globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Navbar from './_components/Navbar/navbar';
 import { Providers } from './providers';
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Judicial Junction',
-	description: 'All your legal needs in one place.',
+	title: {
+		default: siteConfig.name,
+		template: `%s - ${siteConfig.name}`,
+	},
+	description: siteConfig.description,
 	themeColor: [
 		{ media: '(prefers-color-scheme: light)', color: 'white' },
 		{ media: '(prefers-color-scheme: dark)', color: 'black' },
 	],
+	icons: {
+		icon: '/favicon.ico',
+		shortcut: '/favicon-16x16.png',
+		apple: '/apple-touch-icon.png',
+	},
 };
 
 export default function RootLayout({
@@ -31,7 +38,7 @@ export default function RootLayout({
 				)}
 			>
 				<Providers>
-					<div className="min-h-screen bg-gradient-to-t from-sky-300 dark:from-default flex flex-col">
+					<div className="min-h-screen bg-primary flex flex-col">
 						<Navbar />
 						{children}
 					</div>
