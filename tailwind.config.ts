@@ -8,14 +8,6 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
-	theme: {
-		extend: {
-			colors: {
-				opp_primary_light: '#D3DBF2',
-				white: '#ffffff',
-			},
-		},
-	},
 	darkMode: 'class',
 	plugins: [
 		nextui({
@@ -24,19 +16,19 @@ const config: Config = {
 				light: {
 					layout: {},
 					colors: {
-						// default: '#F5F5F5',
-						// primary: '#F2EAD3',
-						// secondary: '#DFD7BF',
-						// warning: '#3F2305',
+						default: '#141E46',
+						primary: '#FFF5E0',
+						secondary: '#FF6969',
+						warning: '#BB2525',
 					},
 				},
 				dark: {
 					layout: {},
 					colors: {
-						default: '#272829',
-						primary: '#61677A',
-						secondary: '#D8D9DA',
-						warning: '#FFF6E0',
+						default: '#D5CEA3',
+						primary: '#1A120B',
+						secondary: '#D5CEA3',
+						warning: '#E5E5CB',
 					},
 				},
 			},
