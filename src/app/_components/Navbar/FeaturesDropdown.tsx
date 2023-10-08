@@ -1,67 +1,69 @@
 'use client';
 import { Button } from '@nextui-org/button';
 import {
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownSection,
-    DropdownTrigger,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownSection,
+	DropdownTrigger,
 } from '@nextui-org/dropdown';
-import { NavbarItem } from '@nextui-org/navbar';
-import { ChevronDown } from '../icons';
+import { useRouter } from 'next/navigation';
+import { ChevronDown, MapIcon, MarketIcon, SearchIcon } from '../icons';
 export default function FeaturesDropdown() {
+	const router = useRouter();
+	router.prefetch('/search');
+	router.prefetch('/manya');
+
 	return (
-		<Dropdown>
+		<Dropdown backdrop="blur">
 			<DropdownTrigger>
 				<Button
 					disableRipple
 					className="p-0 bg-transparent data-[hover=true]:bg-transparent"
 					radius="sm"
 					variant="light"
-                    size='lg'
-                    endContent={<ChevronDown />}
+					size="lg"
+					endContent={<ChevronDown />}
 				>
 					Explore
 				</Button>
 			</DropdownTrigger>
 
 			<DropdownMenu
-				aria-label="ACME features"
+				aria-label="Digital Adhivakta features"
 				className="w-[340px]"
 				itemClasses={{
 					base: 'gap-4',
 				}}
+				variant="light"
+				onAction={(key) => router.push(`${key}`)}
 			>
-				<DropdownItem
-					key="autoscaling"
-					description="ACME scales apps to meet user demand, automagically, based on load."
-				>
-					Autoscaling
-				</DropdownItem>
-				<DropdownItem
-					key="usage_metrics"
-					description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-				>
-					Usage Metrics
-				</DropdownItem>
-				<DropdownItem
-					key="production_ready"
-					description="ACME runs on ACME, join us and others serving requests at web scale."
-				>
-					Production Ready
-				</DropdownItem>
-				<DropdownItem
-					key="99_uptime"
-					description="Applications stay on the grid with high availability and high uptime guarantees."
-				>
-					+99% Uptime
-				</DropdownItem>
-				<DropdownItem
-					key="supreme_support"
-					description="Overcome any challenge with a supporting team ready to respond."
-				>
-					+Supreme Support
-				</DropdownItem>
+				<DropdownSection title="For Lawyers" showDivider>
+					<DropdownItem
+						key="search"
+						description="This is a search tool Intended for Lawyers where they can semantically search all previous cases."
+						startContent={<SearchIcon size={30} />}
+					>
+						Case Search
+					</DropdownItem>
+				</DropdownSection>
+
+				<DropdownSection title="For Users">
+					<DropdownItem
+						key="map"
+						description="This tool shows users all practicing Lawyers present in different cities with thier contact number."
+						startContent={<MapIcon size={30} />}
+					>
+						Search Lawyers by area
+					</DropdownItem>
+					<DropdownItem
+						key="manya"
+						description="This is a marketplace for users which displays Lawyers by thier field of practice."
+						startContent={<MarketIcon size={30} />}
+					>
+						Marketplace
+					</DropdownItem>
+				</DropdownSection>
 			</DropdownMenu>
 		</Dropdown>
 	);
