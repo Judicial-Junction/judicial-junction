@@ -38,7 +38,7 @@ export default function RootLayout({
 				)}
 			>
 				<Providers>
-					<div className="min-h-screen bg-primary flex flex-col">
+					<div className="min-h-screen bg-gradient-to-b from-primary flex flex-col">
 						<Navbar />
 						{children}
 					</div>
