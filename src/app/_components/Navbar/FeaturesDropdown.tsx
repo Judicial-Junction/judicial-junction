@@ -11,8 +11,11 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, MapIcon, MarketIcon, SearchIcon } from '../icons';
 export default function FeaturesDropdown() {
 	const router = useRouter();
-	router.prefetch('/search');
-	router.prefetch('/manya');
+
+	if (typeof window !== 'undefined') {
+		router.prefetch('/search');
+		router.prefetch('/manya');
+	}
 
 	return (
 		<Dropdown backdrop="blur">
