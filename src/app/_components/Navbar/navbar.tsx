@@ -9,7 +9,6 @@ import {
 	NavbarMenuToggle,
 	Navbar as NextUINavbar,
 } from '@nextui-org/navbar';
-import clsx from 'clsx';
 import NextLink from 'next/link';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import { AcmeLogo } from '../icons';
