@@ -18,8 +18,7 @@ export default function TextAnimation() {
 				]}
 				speed={50}
 				omitDeletionAnimation={true}
-				style={{ fontSize: '2.8em', fontWeight: 'bold' }}
-				className="hidden sm:flex"
+				className="hidden sm:flex font-bold text-[2.8em] text-warning"
 				repeat={Infinity}
 			/>
 

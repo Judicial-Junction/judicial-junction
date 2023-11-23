@@ -19,7 +19,7 @@ export default function Navbar() {
 	return (
 		<NextUINavbar shouldHideOnScroll>
 			<NavbarBrand className="hidden sm:flex">
-				<Link color="foreground" className="" href="/" as={NextLink}>
+				<Link color="secondary" className="" href="/" as={NextLink}>
 					<AcmeLogo />
 				</Link>
 			</NavbarBrand>
@@ -45,7 +45,7 @@ export default function Navbar() {
 			</NavbarContent>
 
 			<NavbarContent className="sm:hidden pr-3" justify="center">
-				<Link color="foreground" className="" href="/" as={NextLink}>
+				<Link color="secondary" className="" href="/" as={NextLink}>
 					<NavbarBrand>
 						<AcmeLogo />
 						<p className="font-bold text-inherit">Judicial</p>
