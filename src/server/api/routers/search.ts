@@ -17,13 +17,13 @@ export const SearchPageRouter = createTRPCRouter({
 			const raw = JSON.stringify({
 				message: input.query,
 			});
-
 			const response = await fetch(
-				'https://opensearchtorch-production.up.railway.app/query',
+				'http://13.234.217.241/query',
 				{
 					method: 'POST',
 					headers: myHeaders,
 					body: raw,
+					redirect: 'follow'
 				},
 			);
 			const res = (await response.json()) as SearchResponse[];
