@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: 'Judicial Junction',
+	name: 'Digital Adhivakta',
 	description: 'All your legal needs in one place.',
 	navItems: [],
 	navMenuItems: [

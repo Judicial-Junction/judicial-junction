@@ -48,7 +48,9 @@ export default function Navbar() {
 				<Link color="secondary" className="" href="/" as={NextLink}>
 					<NavbarBrand>
 						<AcmeLogo />
-						<p className="font-bold text-inherit">Judicial</p>
+						<p className="font-bold text-inherit">
+							Digital Adhivakta
+						</p>
 					</NavbarBrand>
 				</Link>
 			</NavbarContent>

@@ -141,7 +141,7 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 						'mb-2 text-3xl font-semibold text-dark dark:text-primary-50',
 					)}
 				>
-					Welcome to Judicial Junction AI Chatbot!
+					Welcome to Digital Adhivakta AI Chatbot!
 				</h1>
 				<p className="leading-normal text-muted-foreground">
 					You can start a conversation about the case here
