@@ -59,13 +59,13 @@ export default function FeaturesDropdown() {
 					>
 						Search Lawyers by area
 					</DropdownItem>
-					<DropdownItem
+					{/* <DropdownItem
 						key="manya"
 						description="This is a marketplace for users which displays Lawyers by thier field of practice."
 						startContent={<MarketIcon size={30} />}
 					>
 						Marketplace
-					</DropdownItem>
+					</DropdownItem> */}
 				</DropdownSection>
 			</DropdownMenu>
 		</Dropdown>

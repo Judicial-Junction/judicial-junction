@@ -17,15 +17,12 @@ export const SearchPageRouter = createTRPCRouter({
 			const raw = JSON.stringify({
 				message: input.query,
 			});
-			const response = await fetch(
-				'http://13.234.217.241/query',
-				{
-					method: 'POST',
-					headers: myHeaders,
-					body: raw,
-					redirect: 'follow'
-				},
-			);
+			const response = await fetch('http://13.234.217.241/query', {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow',
+			});
 			const res = (await response.json()) as SearchResponse[];
 			return removeDuplicatesByScore(res);
 		}),
