@@ -1,7 +1,5 @@
 'use client';
-import clsx from 'clsx';
 import { TypeAnimation } from 'react-type-animation';
-import { title } from '../primitives';
 
 export default function TextAnimation() {
 	return (
@@ -18,11 +16,9 @@ export default function TextAnimation() {
 				]}
 				speed={50}
 				omitDeletionAnimation={true}
-				className="hidden sm:flex font-bold text-[2.8em] text-warning"
+				className="font-bold text-[2.8em] text-warning"
 				repeat={Infinity}
 			/>
-
-			<h1 className={clsx('sm:hidden', title())}> Digital Adhivakta</h1>
 		</>
 	);
 }
