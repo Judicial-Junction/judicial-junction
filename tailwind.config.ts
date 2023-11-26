@@ -17,7 +17,7 @@ const config: Config = {
 					layout: {},
 					colors: {
 						default: '#141E46',
-						primary: '#FFF5E0',
+						primary: '#F9F5F6',
 						secondary: '#FF6969',
 						warning: '#BB2525',
 					},
@@ -26,7 +26,7 @@ const config: Config = {
 					layout: {},
 					colors: {
 						default: '#D5CEA3',
-						primary: '#1A120B',
+						primary: '#2E2013',
 						secondary: '#D5CEA3',
 						warning: '#E5E5CB',
 					},
