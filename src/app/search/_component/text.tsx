@@ -18,10 +18,6 @@ export default function SearchText() {
 		setinput('');
 	};
 
-	const HandleChange = (event: any) => {
-		setinput(event.target.value[0]);
-	};
-
 	return (
 		<>
 			<form

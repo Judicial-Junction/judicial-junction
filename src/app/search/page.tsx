@@ -1,4 +1,3 @@
-import { title } from '@/app/_components/primitives';
 import { Divider } from '@nextui-org/divider';
 import SearchText from './_component/text';
 export default function Search() {
