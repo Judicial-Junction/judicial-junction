@@ -1,13 +1,11 @@
 'use client';
 import { trpc } from '@/app/_trpc/client';
 import { Button } from '@nextui-org/button';
-import { Input, Textarea } from '@nextui-org/input';
+import { Textarea } from '@nextui-org/input';
 import { Link } from '@nextui-org/link';
 import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
 import ExampleQuery from './example';
-
-import { ChatIcon } from '@/app/_components/icons';
 
 export default function SearchText() {
 	const mut = trpc.SearchPage.query.useMutation();
