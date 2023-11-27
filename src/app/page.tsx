@@ -41,7 +41,7 @@ export default function Home() {
 						</h1>
 						<div className="mt-6 ">
 							<ImageCard />
-							<hr className=' border-t-0 my-6'/>
+							<hr className=" border-t-0 my-6" />
 							<ImageMapCard />
 						</div>
 					</div>

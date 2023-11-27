@@ -25,8 +25,8 @@ export default function ImageMapCard() {
 						width="300"
 						height="200"
 					/>
-					</Link>
-				</Card>
+				</Link>
+			</Card>
 		</>
 	);
 }

@@ -25,8 +25,8 @@ export default function ImageSearchCard() {
 						width="300"
 						height="200"
 					/>
-					</Link>
-				</Card>
+				</Link>
+			</Card>
 		</>
 	);
 }
