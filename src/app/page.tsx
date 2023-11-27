@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import FeaturesDropdownLanding from './_components/Landing/FeaturesDropdownLanding';
 import GreetingText from './_components/Landing/GreetingText';
-import ImageCard from './_components/Landing/ImageCard';
+import ImageMapCard from './_components/Landing/ImageMapCard';
+import ImageCard from './_components/Landing/ImageSearchCard';
 import TextAnimation from './_components/Landing/text';
 import { subtitle, title } from './_components/primitives';
 export default function Home() {
@@ -38,8 +39,10 @@ export default function Home() {
 						>
 							Our services
 						</h1>
-						<div className="mt-6">
+						<div className="mt-6 ">
 							<ImageCard />
+							<hr className=' border-t-0 my-6'/>
+							<ImageMapCard />
 						</div>
 					</div>
 				</div>
