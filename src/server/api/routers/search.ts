@@ -17,6 +17,7 @@ export const SearchPageRouter = createTRPCRouter({
 			const raw = JSON.stringify({
 				message: input.query,
 			});
+
 			const response = await fetch('http://13.234.217.241/query', {
 				method: 'POST',
 				headers: myHeaders,
