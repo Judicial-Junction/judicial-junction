@@ -2,7 +2,7 @@ import { Card, CardHeader } from '@nextui-org/card';
 import { Image } from '@nextui-org/image';
 import NextImage from 'next/image';
 import Link from 'next/link';
-export default function ImageCard() {
+export default function ImageSearchCard() {
 	return (
 		<>
 			<Card className="col-span-12 sm:col-span-4 h-[300px]">
