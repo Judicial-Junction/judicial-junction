@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center">Judicial Junction</h1>
+<h1 align="center">Digital Adhivakta</h1>
   <p align="center">
     Harvey + Fiverr
     <br/>

@@ -1,7 +1,5 @@
 import { IconArrowRight } from '@/app/_components/icons';
-import { subtitle, title } from '@/app/_components/primitives';
 import { trpc } from '@/app/_trpc/client';
-import { Button } from '@nextui-org/button';
 import { Link } from '@nextui-org/link';
 import { useQueryClient } from '@tanstack/react-query';
 import clsx from 'clsx';
@@ -134,19 +132,15 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 	};
 
 	return (
-		<div className="mx-auto max-w-2xl px-4  mt-20">
+		<div className="mx-auto max-w-2xl px-4  mt-16">
 			<div className="rounded-lg p-8 text-center">
-				<h1
-					className={clsx(
-						'mb-2 text-3xl font-semibold text-dark dark:text-primary-50',
-					)}
-				>
-					Welcome to Judicial Junction AI Chatbot!
+				<h1 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-6xl/none">
+					Digital Adhivakta AI Chatbot
 				</h1>
-				<p className="leading-normal text-muted-foreground">
+				<p className="mx-auto max-w-[500px] text-zinc-500 text-sm md:text-xl dark:text-zinc-400">
 					You can start a conversation about the case here
 				</p>
-				<div className="mt-4 flex flex-col space-y-2 ">
+				<div className="mt-8 flex flex-col space-y-2 ">
 					{exampleMessages.map((message, index) => (
 						<Link
 							onClick={() => HandleClick(message.message)}

@@ -1,77 +1,94 @@
-'use client';
+import { siteConfig } from '@/config/site';
 import { Link } from '@nextui-org/link';
 import {
 	NavbarBrand,
 	NavbarContent,
 	NavbarItem,
+	NavbarMenu,
+	NavbarMenuItem,
+	NavbarMenuToggle,
 	Navbar as NextUINavbar,
 } from '@nextui-org/navbar';
-
+import NextLink from 'next/link';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import { AcmeLogo } from '../icons';
 import AuthButton from './AuthButton';
-
-const navItems = [
-	{
-		label: 'fiverr ?',
-		href: '#',
-		active: true,
-	},
-	{
-		label: 'chat ?',
-		href: '#',
-		active: false,
-	},
-];
-
-const navMenuItems = [
-	{
-		label: 'fiverr ?',
-		href: '#',
-	},
-	{
-		label: 'chat ?',
-		href: '#',
-	},
-];
-
-const links = {
-	github: 'https://github.com/Judicial-junction/judicial-junction',
-	demo: '/chat',
-};
+import FeaturesDropdown from './FeaturesDropdown';
 
 export default function Navbar() {
 	return (
-		<NextUINavbar shouldHideOnScroll isBordered>
-			<NavbarBrand>
-				<Link color="foreground" className="" href="/">
+		<NextUINavbar shouldHideOnScroll>
+			<NavbarBrand className="hidden sm:flex">
+				<Link color="secondary" className="" href="/" as={NextLink}>
 					<AcmeLogo />
 				</Link>
 			</NavbarBrand>
 
-			<NavbarContent
-				className="hidden sm:flex gap-[40px]"
-				justify="center"
-			>
-				<NavbarItem isActive>
+			<NavbarContent className="sm:hidden" justify="start">
+				<NavbarMenuToggle />
+			</NavbarContent>
+
+			<NavbarContent className="hidden sm:flex  pl-52" justify="center">
+				<NavbarItem>
 					<Link
-						href="/search"
-						color="danger"
-						className="animate-pulse"
+						href="#"
+						color="foreground"
 						aria-current="page"
+						as={NextLink}
 					>
-						<p className="text-[18px]">Search</p>
+						<p className="text-[18px]">About</p>
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link color="foreground" href="/map">
-						<p className="text-[18px]">Near you</p>
-					</Link>
+					<FeaturesDropdown />
 				</NavbarItem>
 			</NavbarContent>
 
-			<NavbarContent justify="end" className="gap-5">
-				<NavbarItem className="hidden lg:flex">
+			<NavbarContent className="sm:hidden pr-3" justify="center">
+				<Link color="secondary" className="" href="/" as={NextLink}>
+					<NavbarBrand>
+						<AcmeLogo />
+						<p className="font-bold text-inherit">
+							Digital Adhivakta
+						</p>
+					</NavbarBrand>
+				</Link>
+			</NavbarContent>
+
+			<NavbarContent justify="end">
+				<NavbarItem className="sm:hidden">
+					<ThemeSwitcher />
+				</NavbarItem>
+			</NavbarContent>
+
+			<NavbarMenu>
+				{siteConfig.navMenuItems.map((item, index) => (
+					<NavbarMenuItem key={`${item}-${index}`}>
+						<Link
+							className="w-full"
+							color={
+								index === 0
+									? 'warning'
+									: index ===
+									  siteConfig.navMenuItems.length - 1
+									? 'danger'
+									: 'foreground'
+							}
+							href={item.href}
+							size="lg"
+							as={NextLink}
+						>
+							{item.label}
+						</Link>
+					</NavbarMenuItem>
+				))}
+				<NavbarMenuItem>
+					<AuthButton />
+				</NavbarMenuItem>
+			</NavbarMenu>
+
+			<NavbarContent className="hidden sm:flex " justify="end">
+				<NavbarItem className="">
 					<ThemeSwitcher />
 				</NavbarItem>
 				<NavbarItem>

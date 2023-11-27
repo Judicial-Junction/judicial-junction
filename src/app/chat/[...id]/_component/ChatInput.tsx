@@ -1,7 +1,7 @@
 import { IconArrowElbow } from '@/app/_components/icons';
 import { trpc } from '@/app/_trpc/client';
 import { Button } from '@nextui-org/button';
-import { Input } from '@nextui-org/input';
+import { Input, Textarea } from '@nextui-org/input';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { MessageInterface } from './Chat';
@@ -15,20 +15,6 @@ export default function ChatInput({ case_number }: { case_number: string }) {
 			await queryClient.cancelQueries({ queryKey: ['messages'] });
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
 				['messages'],
-			);
-
-			let FirstMessage: MessageInterface = {
-				content_message: `Starting chat for Case Number - ${case_number}`,
-				created_by: 'bot',
-			};
-
-			if (previousMessages) {
-				previousMessages = [...previousMessages, FirstMessage];
-			}
-
-			queryClient.setQueryData<MessageInterface[]>(
-				['messages'],
-				previousMessages,
 			);
 
 			previousMessages = queryClient.getQueryData<MessageInterface[]>([
@@ -130,9 +116,11 @@ export default function ChatInput({ case_number }: { case_number: string }) {
 					onSubmit={handleSubmit}
 					className="mx-2 gap-3 last:mb-2 md:mx-auto md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl"
 				>
-					<Input
+					<Textarea
+						minRows={1}
 						placeholder="Type your message here"
-						color="primary"
+						color="secondary"
+						variant="faded"
 						value={inputMessage}
 						onValueChange={setinputMessage}
 						endContent={
