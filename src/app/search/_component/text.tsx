@@ -67,7 +67,7 @@ export default function SearchText() {
 					mut.data.map((result, index) => (
 						<div
 							key={index}
-							className="flex flex-col px-4 md:px-10 border-white border-2 bg-opacity-10 my-5 md:my-10 py-3 md:py-5 rounded-3xl"
+							className="flex lg:w-[750px] sm:w-[200px] flex-col px-4 md:px-10 mx-3 border-white border-2 bg-opacity-10 my-5 md:my-10 py-3 md:py-5 rounded-3xl"
 						>
 							<div className="flex my-2 md:my-4 md:gap-8 justify-center">
 								<p className="font-semibold underline text-lg  md:text-xl">
