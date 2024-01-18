@@ -18,7 +18,7 @@ export const SearchPageRouter = createTRPCRouter({
 				message: input.query,
 			});
 
-			const response = await fetch('http://13.234.217.241/query', {
+			const response = await fetch('http://search-lb-827559157.ap-south-1.elb.amazonaws.com/query', {
 				method: 'POST',
 				headers: myHeaders,
 				body: raw,
