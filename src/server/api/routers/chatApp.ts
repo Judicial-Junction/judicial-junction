@@ -20,7 +20,7 @@ export const documentQueryingRouter = createTRPCRouter({
 			});
 
 			const response = await fetch(
-				'https://chatserver-production-f10b.up.railway.app/query',
+				'https://chatserver-service.glpav73v6j88m.ap-south-1.cs.amazonlightsail.com/query',
 				{
 					method: 'POST',
 					headers: myHeaders,
