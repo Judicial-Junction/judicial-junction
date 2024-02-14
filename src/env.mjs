@@ -7,13 +7,6 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z
-      .string()
-      .url()
-      .refine(
-        (str) => !str.includes('YOUR_MYSQL_URL_HERE'),
-        'You forgot to change the default URL',
-      ),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
@@ -29,8 +22,6 @@ export const env = createEnv({
       process.env.VERCEL ? z.string().min(1) : z.string().url(),
     ),
     // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
-    GOOGLE_CLIENT_ID: z.string().min(1),
-    GOOGLE_CLIENT_SECRET: z.string().min(1),
     OPENSEARCH_HOST: z.string(),
     OPENSEARCH_PORT: z.string(),
     OPENSEARCH_USER: z.string(),
@@ -44,7 +35,6 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
-    // mapboxAccessToken: z.string()
   },
 
   /**
@@ -52,13 +42,10 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    OPENSEARCH_HOST: process.env.OPENSEARCH_HOST,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-    OPENSEARCH_HOST: process.env.OPENSEARCH_HOST,
     OPENSEARCH_PORT: process.env.OPENSEARCH_PORT,
     OPENSEARCH_USER: process.env.OPENSEARCH_USER,
     OPENSEARCH_PASSWORD: process.env.OPENSEARCH_PASSWORD,

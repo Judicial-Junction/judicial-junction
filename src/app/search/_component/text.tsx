@@ -1,6 +1,6 @@
 'use client';
 import { trpc } from '@/app/_trpc/client';
-import { FuzzyResponse, ValidSearchType } from '@/server/api/routers/utils';
+import { ValidSearchType } from '@/server/api/routers/utils';
 import { Button } from '@nextui-org/button';
 import { Divider } from '@nextui-org/divider';
 import { Textarea } from '@nextui-org/input';
@@ -10,7 +10,7 @@ import ExampleQuery from './example';
 import SearchSelection from './selection';
 
 export default function SearchText() {
-  const FuzzyMut = trpc.search.fuzzy.search.useMutation({
+  const FuzzyMut = trpc.search_router.fuzzy_search.useMutation({
     onMutate: () => {
       setdisabled(true);
     },
@@ -18,7 +18,7 @@ export default function SearchText() {
       setdisabled(false);
     },
   });
-  const SemanticMut = trpc.search.semantic.search.useMutation({
+  const SemanticMut = trpc.search_router.semantic_search.useMutation({
     onMutate: () => {
       setdisabled(true);
     },
@@ -26,7 +26,7 @@ export default function SearchText() {
       setdisabled(false);
     },
   });
-  const SentenceMut = trpc.search.sentence.search.useMutation({
+  const SentenceMut = trpc.search_router.sentence_search.useMutation({
     onMutate: () => {
       setdisabled(true);
     },
