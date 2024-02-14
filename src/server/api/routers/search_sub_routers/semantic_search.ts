@@ -1,10 +1,9 @@
+import { createTRPCRouter, publicProcedure } from '@/server/trpc';
 import { z } from 'zod';
+import { SemanticResponse } from '../utils';
 
-import { createTRPCRouter, publicProcedure } from '../../trpc';
-import { SearchResponse, removeDuplicatesByScore } from './utils';
-
-export const SearchPageRouter = createTRPCRouter({
-  query: publicProcedure
+export const SemanticSearch = createTRPCRouter({
+  search: publicProcedure
     .input(
       z.object({
         query: z.string(),
@@ -12,6 +11,8 @@ export const SearchPageRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       const myHeaders = new Headers();
+
+      myHeaders.append('accept', 'application/json');
       myHeaders.append('Content-Type', 'application/json');
 
       const raw = JSON.stringify({
@@ -19,15 +20,14 @@ export const SearchPageRouter = createTRPCRouter({
       });
 
       const response = await fetch(
-        'http://search-lb-827559157.ap-south-1.elb.amazonaws.com/query',
+        'http://ec2-3-108-192-195.ap-south-1.compute.amazonaws.com:8000/semantic_similarity',
         {
           method: 'POST',
           headers: myHeaders,
           body: raw,
-          redirect: 'follow',
         },
       );
-      const res = (await response.json()) as SearchResponse[];
-      return removeDuplicatesByScore(res);
+      const result = await response.json();
+      return result as SemanticResponse[];
     }),
 });
