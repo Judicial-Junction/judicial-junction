@@ -20,16 +20,12 @@ export default function SearchSelection({
     <Tabs
       color="primary"
       variant="solid"
-      disabledKeys={['Keyword', 'SentenceEmbedding']}
       selectedKey={selected}
       onSelectionChange={HandleChange}
     >
-      <Tab key="Keyword" title="Keyword search"></Tab>
-      <Tab
-        key="SentenceEmbedding"
-        title="Setence similarity search"
-      ></Tab>
-      <Tab key="WordEmbedding" title="Word similarity search"></Tab>
+      <Tab key="Fuzzy Search" title="Fuzzy search"></Tab>
+      <Tab key="Sentence Similarity" title="Setence similarity"></Tab>
+      <Tab key="Semantic Search" title="Semantic search"></Tab>
     </Tabs>
   );
 }
