@@ -1,19 +1,11 @@
 import { createTRPCRouter, publicProcedure } from '../trpc';
-import { documentQueryingRouter } from './routers/chatApp';
-import { FuzzySearch } from './routers/search_sub_routers/fuzzy_search';
-import { SemanticSearch } from './routers/search_sub_routers/semantic_search';
-import { SentenceSearch } from './routers/search_sub_routers/sentence_search';
+import { search_router } from './routers/search';
 
 export const appRouter = createTRPCRouter({
   health: publicProcedure.query(() => {
-    return 'healthy api';
+    return 'Just checking trpc';
   }),
-  search: createTRPCRouter({
-    fuzzy: FuzzySearch,
-    semantic: SemanticSearch,
-    sentence: SentenceSearch,
-  }),
-  documentQuery: documentQueryingRouter,
+  search_router,
 });
 
 export type AppRouter = typeof appRouter;
