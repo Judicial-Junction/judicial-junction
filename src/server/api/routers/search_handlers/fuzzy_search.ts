@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { FuzzyResponse, OpensearchClient } from '../utils';
 import { TRPCError } from '@trpc/server';
 

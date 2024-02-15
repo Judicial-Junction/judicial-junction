@@ -1,23 +1,29 @@
 import { createTRPCRouter, publicProcedure } from '@/server/trpc';
 import { z } from 'zod';
-import FuzzySearchMutation from './search_sub_routers/fuzzy_search';
-import SemanticSearchMutation from './search_sub_routers/semantic_search';
-import SentenceSearchMutation from './search_sub_routers/sentence_search';
+import FuzzySearchMutation from './search_handlers/fuzzy_search';
+import SemanticSearchMutation from './search_handlers/semantic_search';
+import SentenceSearchMutation from './search_handlers/sentence_search';
 
 export const search_router = createTRPCRouter({
-  fuzzy_search: publicProcedure
-    .input(z.object({ query: z.string() }))
+  opensearch: publicProcedure
+    .input(
+      z.object({
+        search_term: z.string(),
+        search_type: z.enum([
+          'Fuzzy Search',
+          'Semantic Search',
+          'Sentence Similarity',
+        ]),
+      }),
+    )
     .mutation(async ({ input }) => {
-      return await FuzzySearchMutation(input.query);
-    }),
-  semantic_search: publicProcedure
-    .input(z.object({ query: z.string() }))
-    .mutation(async ({ input }) => {
-      return await SemanticSearchMutation(input.query);
-    }),
-  sentence_search: publicProcedure
-    .input(z.object({ query: z.string() }))
-    .mutation(async ({ input }) => {
-      return await SentenceSearchMutation(input.query);
+      switch (input.search_type) {
+        case 'Fuzzy Search':
+          return await FuzzySearchMutation(input.search_term);
+        case 'Semantic Search':
+          return await SemanticSearchMutation(input.search_term);
+        case 'Sentence Similarity':
+          return await SentenceSearchMutation(input.search_term);
+      }
     }),
 });

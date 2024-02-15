@@ -8,68 +8,25 @@ import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
 import ExampleQuery from './example';
 import SearchSelection from './selection';
+import SemanticResponse from './semanticRes';
 
 export default function SearchText() {
-  const FuzzyMut = trpc.search_router.fuzzy_search.useMutation({
-    onMutate: () => {
-      setdisabled(true);
-    },
-    onSettled: () => {
-      setdisabled(false);
-    },
-  });
-  const SemanticMut = trpc.search_router.semantic_search.useMutation({
-    onMutate: () => {
-      setdisabled(true);
-    },
-    onSettled: () => {
-      setdisabled(false);
-    },
-  });
-  const SentenceMut = trpc.search_router.sentence_search.useMutation({
-    onMutate: () => {
-      setdisabled(true);
-    },
-    onSettled: () => {
-      setdisabled(false);
-    },
-  });
-
+  const mut = trpc.search_router.opensearch.useMutation();
   const [input, setinput] = useState('');
   const [searchType, setSearchType] =
     useState<ValidSearchType>('Semantic Search');
-  const [disabled, setdisabled] = useState(false);
   // const [cases, setcases] = useState((mut.data || []) as any[]);
 
   const HandleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (input === '') {
-      return;
-    }
-    switch (searchType) {
-      case 'Fuzzy Search':
-        FuzzyMut.mutate({ query: input });
-        break;
-      case 'Semantic Search':
-        SemanticMut.mutate({ query: input });
-        break;
-      case 'Sentence Similarity':
-        SentenceMut.mutate({ query: input });
-        break;
-    }
+    if (input === '') return;
+    mut.mutate({ search_term: input, search_type: searchType });
     setinput('');
   };
 
   const UpdateSearchType = (input: ValidSearchType) => {
     setSearchType(input);
   };
-
-  const MutationError =
-    FuzzyMut.isError || SemanticMut.isError || SentenceMut.isError;
-  const MutationLoading =
-    FuzzyMut.isLoading || SentenceMut.isLoading || SemanticMut.isLoading;
-  const MutationSuccess =
-    FuzzyMut.isSuccess || SentenceMut.isSuccess || SemanticMut.isSuccess;
 
   return (
     <>
@@ -87,7 +44,6 @@ export default function SearchText() {
           size="lg"
           value={input}
           onValueChange={setinput}
-          isDisabled={disabled}
         />
         <br />
         <Button
@@ -100,7 +56,7 @@ export default function SearchText() {
         </Button>
       </form>
 
-      {!MutationSuccess && !MutationError && !MutationLoading && (
+      {!mut.isSuccess && !mut.isError && !mut.isLoading && (
         <div className="mt-10 hidden sm:flex items-center flex-nowrap">
           <p className="font-bold text-xl mr-1">Example Query : </p>
           <ExampleQuery />
@@ -108,21 +64,14 @@ export default function SearchText() {
       )}
 
       <div className="mt-10">
-        {MutationLoading && (
+        {mut.isLoading && (
           <div className="">
             <Spinner size="lg" color="warning" />
           </div>
         )}
-        {MutationError && (
+        {mut.isError && (
           <div className="text-danger">
-            An error occurred:
-            {FuzzyMut.isError
-              ? FuzzyMut.error.message
-              : SemanticMut.isError
-                ? SemanticMut.error.message
-                : SentenceMut.isError
-                  ? SentenceMut.error.message
-                  : null}
+            An error occurred: {mut.error.message}
           </div>
         )}
       </div>
