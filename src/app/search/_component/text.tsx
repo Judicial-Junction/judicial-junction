@@ -1,6 +1,6 @@
 'use client';
 import { trpc } from '@/app/_trpc/client';
-import { ValidSearchType } from '@/server/api/routers/utils';
+import { ValidSearchType } from '@/server/api/routers/search_utils';
 import { Button } from '@nextui-org/button';
 import { Divider } from '@nextui-org/divider';
 import { Textarea } from '@nextui-org/input';
@@ -8,7 +8,7 @@ import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
 import ExampleQuery from './example';
 import SearchSelection from './selection';
-import SemanticResponse from './semanticRes';
+import Response from './response';
 
 export default function SearchText() {
   const mut = trpc.search_router.opensearch.useMutation();
@@ -56,12 +56,12 @@ export default function SearchText() {
         </Button>
       </form>
 
-      {!mut.isSuccess && !mut.isError && !mut.isLoading && (
+      {/*!mut.isSuccess && !mut.isError && !mut.isLoading && (
         <div className="mt-10 hidden sm:flex items-center flex-nowrap">
           <p className="font-bold text-xl mr-1">Example Query : </p>
           <ExampleQuery />
         </div>
-      )}
+      )*/}
 
       <div className="mt-10">
         {mut.isLoading && (
@@ -74,6 +74,7 @@ export default function SearchText() {
             An error occurred: {mut.error.message}
           </div>
         )}
+        <Response />
       </div>
     </>
   );
