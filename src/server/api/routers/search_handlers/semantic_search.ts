@@ -1,11 +1,10 @@
-import { z } from 'zod';
-import { SemanticResponse } from '../utils';
+import { SearchResponse } from '../search_utils';
 import { TRPCError } from '@trpc/server';
 
 export default async function SemanticSearchMutation(input: string) {
   const myHeaders = new Headers();
 
-  myHeaders.append('accept', 'application/json');
+  myHeaders.append('Accept', 'application/json');
   myHeaders.append('Content-Type', 'application/json');
 
   const raw = JSON.stringify({
@@ -22,7 +21,7 @@ export default async function SemanticSearchMutation(input: string) {
       },
     );
     const result = await response.json();
-    return result as SemanticResponse[];
+    return result as SearchResponse[];
   } catch (error) {
     console.log(error);
     throw new TRPCError({
