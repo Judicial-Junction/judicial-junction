@@ -56,12 +56,12 @@ export default function SearchText() {
         </Button>
       </form>
 
-      {/*!mut.isSuccess && !mut.isError && !mut.isLoading && (
+      {!mut.isSuccess && !mut.isError && !mut.isLoading && (
         <div className="mt-10 hidden sm:flex items-center flex-nowrap">
           <p className="font-bold text-xl mr-1">Example Query : </p>
           <ExampleQuery />
         </div>
-      )*/}
+      )}
 
       <div className="mt-10">
         {mut.isLoading && (
@@ -74,7 +74,7 @@ export default function SearchText() {
             An error occurred: {mut.error.message}
           </div>
         )}
-        <Response />
+        {mut.isSuccess && <Response data={mut.data} />}
       </div>
     </>
   );

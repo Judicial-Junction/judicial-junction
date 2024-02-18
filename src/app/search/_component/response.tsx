@@ -12,31 +12,18 @@ import {
   useDisclosure,
 } from '@nextui-org/modal';
 
-const demoData = [
-  {
-    _index: 'case-text',
-    _id: 'yO87rY0BmbvEn2XjuFz-',
-    _score: 10.629701,
-    fields: {
-      'Case Number': ['CA 1213/AAm89'],
-      'Judgement PDF URL': ['https://youtube.com'],
-      'Judgement Date': ['10/10/21'],
-      'Case Title': ['Apple vs Microsoft'],
-      'Judgement Text': [
-        'dAaidjiajda bad formatted \\n tezt \n do this work',
-      ],
-    },
-  },
-] as SearchResponse[];
-
-export default function Response() {
-  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+export default function Response({ data }: { data: SearchResponse[] }) {
   return (
-    <>
-      {demoData.map((result, index) => (
-        <>
-          <Card key={index} className="w-max">
-            <CardHeader className="flex flex-col items-start gap-2">
+    <div className="flex flex-col gap-4 items-center">
+      {data.map((result, index) => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const { isOpen, onOpen, onClose } = useDisclosure();
+        return (
+          <Card
+            key={index}
+            className="items-center justify-center sm:w-[500px] w-min"
+          >
+            <CardHeader className="flex flex-col gap-2 justify-center text-center">
               <h1 className="font-bold text-2xl">
                 {result.fields['Case Title'][0]}
               </h1>
@@ -47,7 +34,7 @@ export default function Response() {
                 Date : {result.fields['Judgement Date'][0]}
               </h4>
             </CardHeader>
-            <CardFooter className="gap-5">
+            <CardFooter className="gap-5 flex justify-center">
               <Button
                 color="secondary"
                 variant="bordered"
@@ -67,38 +54,64 @@ export default function Response() {
                 View Case
               </Button>
             </CardFooter>
-          </Card>
-          <Modal
-            isOpen={isOpen}
-            onClose={onClose}
-            scrollBehavior="inside"
-          >
-            <ModalContent>
-              <>
-                <ModalHeader className=" text-center">
-                  dakdak
-                  {result.fields['Case Title'][0]}
+            <Modal
+              key={index}
+              isOpen={isOpen}
+              onClose={onClose}
+              scrollBehavior="inside"
+              backdrop="opaque"
+            >
+              <ModalContent>
+                <ModalHeader className="flex flex-col">
+                  <h1 className="text-xl">
+                    {result.fields['Case Title'][0]}
+                  </h1>
+                  <div className="text-sm flex font-light gap-2">
+                    <h4>
+                      {result.fields['Case Number'][0]}
+                    </h4>
+                    <h4>
+                      {result.fields['Judgement Date'][0]}
+                    </h4>
+                  </div>
                 </ModalHeader>
                 {result.fields['Judgement Text'] && (
                   <ModalBody>
                     {result.fields['Judgement Text'][0]}
                   </ModalBody>
                 )}
-                <ModalFooter>
+                <ModalFooter className="gap-4">
                   <Button
+                    color="secondary"
+                    size="md"
+                    variant="bordered"
+                    as={Link}
+                    isExternal
+                    startContent={
+                      <FileIcon className="h-4 w-4" />
+                    }
+                    href={
+                      result.fields[
+                      'Judgement PDF URL'
+                      ][0]
+                    }
+                  >
+                    View PDF
+                  </Button>
+                  <Button
+                    size="md"
                     color="danger"
-                    variant="light"
+                    variant="bordered"
                     onPress={onClose}
                   >
                     Close
                   </Button>
                 </ModalFooter>
-              </>
-              ;
-            </ModalContent>
-          </Modal>
-        </>
-      ))}
-    </>
+              </ModalContent>
+            </Modal>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
