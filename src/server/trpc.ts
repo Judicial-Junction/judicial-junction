@@ -1,9 +1,8 @@
-import { TRPCError, initTRPC } from '@trpc/server';
+import { initTRPC } from '@trpc/server';
 import SuperJson from 'superjson';
 import { ZodError } from 'zod';
-import { createContext } from './api/context';
 
-const t = initTRPC.context<typeof createContext>().create({
+const t = initTRPC.create({
 	transformer: SuperJson,
 	errorFormatter({ shape, error }) {
 		return {
@@ -11,9 +10,7 @@ const t = initTRPC.context<typeof createContext>().create({
 			data: {
 				...shape.data,
 				zodError:
-					error.cause instanceof ZodError
-						? error.cause.flatten()
-						: null,
+					error.cause instanceof ZodError ? error.cause.flatten() : null,
 			},
 		};
 	},
@@ -21,16 +18,3 @@ const t = initTRPC.context<typeof createContext>().create({
 
 export const createTRPCRouter = t.router;
 export const publicProcedure = t.procedure;
-
-const enforceAuth = t.middleware(({ ctx, next }) => {
-	if (!ctx.session?.user) {
-		throw new TRPCError({ code: 'UNAUTHORIZED' });
-	}
-	return next({
-		ctx: {
-			session: { ...ctx.session },
-		},
-	});
-});
-
-export const protectedProcedure = t.procedure.use(enforceAuth);

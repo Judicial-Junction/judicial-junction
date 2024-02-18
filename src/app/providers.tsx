@@ -3,7 +3,6 @@ import { trpc } from '@/app/_trpc/client';
 import { NextUIProvider } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
-import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import React, { useState } from 'react';
 import SuperJSON from 'superjson';
@@ -31,16 +30,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<trpc.Provider client={trpcClient} queryClient={queryClient}>
 			<QueryClientProvider client={queryClient}>
-				<SessionProvider>
-					<NextUIProvider>
-						<NextThemesProvider
-							attribute="class"
-							defaultTheme="dark"
-						>
-							{children}
-						</NextThemesProvider>
-					</NextUIProvider>
-				</SessionProvider>
+				<NextUIProvider>
+					<NextThemesProvider attribute="class" defaultTheme="dark">
+						{children}
+					</NextThemesProvider>
+				</NextUIProvider>
 			</QueryClientProvider>
 		</trpc.Provider>
 	);

@@ -1,13 +1,17 @@
+import { z } from 'zod';
 import { createTRPCRouter, publicProcedure } from '../trpc';
-import { documentQueryingRouter } from './routers/chatApp';
-import { SearchPageRouter } from './routers/search';
+import { search_router } from './routers/search';
 
 export const appRouter = createTRPCRouter({
-	Health: publicProcedure.query(() => {
-		return 'healthy api';
+	health: publicProcedure.query(() => {
+		return 'Just checking trpc';
 	}),
-	SearchPage: SearchPageRouter,
-	documentQuery: documentQueryingRouter,
+	search_router,
+	documentQuery: publicProcedure
+		.input(z.object({ query: z.string(), case_number: z.string() }))
+		.mutation(async () => {
+			return 'Not Implemented';
+		}),
 });
 
 export type AppRouter = typeof appRouter;

@@ -18,12 +18,7 @@ export default function Home() {
 						<FeaturesDropdownLanding />
 					</div>
 					<div className=" mt-14 mx-auto hidden flex-col">
-						<h1
-							className={clsx(
-								subtitle(),
-								'font-bold text-xl text-center',
-							)}
-						>
+						<h1 className={clsx(subtitle(), 'font-bold text-xl text-center')}>
 							Our services
 						</h1>
 						<div className="mt-16 flex gap-24">
@@ -31,12 +26,7 @@ export default function Home() {
 						</div>
 					</div>
 					<div className="mt-14 mx-auto sm:hidden flex  flex-col">
-						<h1
-							className={clsx(
-								subtitle(),
-								'font-bold text-xl text-center',
-							)}
-						>
+						<h1 className={clsx(subtitle(), 'font-bold text-xl text-center')}>
 							Our services
 						</h1>
 						<div className="mt-6 ">

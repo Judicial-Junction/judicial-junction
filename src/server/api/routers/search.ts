@@ -1,30 +1,29 @@
+import { createTRPCRouter, publicProcedure } from '@/server/trpc';
 import { z } from 'zod';
+import FuzzySearchMutation from './search_handlers/fuzzy_search';
+import SemanticSearchMutation from './search_handlers/semantic_search';
+import SentenceSearchMutation from './search_handlers/sentence_search';
 
-import { createTRPCRouter, publicProcedure } from '../../trpc';
-import { SearchResponse, removeDuplicatesByScore } from './utils';
-
-export const SearchPageRouter = createTRPCRouter({
-	query: publicProcedure
+export const search_router = createTRPCRouter({
+	opensearch: publicProcedure
 		.input(
 			z.object({
-				query: z.string(),
+				search_term: z.string(),
+				search_type: z.enum([
+					'Fuzzy Search',
+					'Semantic Search',
+					'Sentence Similarity',
+				]),
 			}),
 		)
 		.mutation(async ({ input }) => {
-			const myHeaders = new Headers();
-			myHeaders.append('Content-Type', 'application/json');
-
-			const raw = JSON.stringify({
-				message: input.query,
-			});
-
-			const response = await fetch('http://search-lb-827559157.ap-south-1.elb.amazonaws.com/query', {
-				method: 'POST',
-				headers: myHeaders,
-				body: raw,
-				redirect: 'follow',
-			});
-			const res = (await response.json()) as SearchResponse[];
-			return removeDuplicatesByScore(res);
+			switch (input.search_type) {
+				case 'Fuzzy Search':
+					return await FuzzySearchMutation(input.search_term);
+				case 'Semantic Search':
+					return await SemanticSearchMutation(input.search_term);
+				case 'Sentence Similarity':
+					return await SentenceSearchMutation(input.search_term);
+			}
 		}),
 });

@@ -5,7 +5,7 @@ export default function Search() {
 		<section className="flex items-center justify-items-center justify-center mt-20">
 			<div className="text-center justify-center  mt-15">
 				<h1 className="text-4xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-6xl/none">
-					Contextual Search
+					Search
 				</h1>
 				<Divider className="my-4 opacity-0" />
 				<SearchText />
