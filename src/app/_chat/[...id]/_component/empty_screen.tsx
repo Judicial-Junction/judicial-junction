@@ -12,8 +12,7 @@ const exampleMessages = [
 	},
 	{
 		heading: 'Find out specifics in this case',
-		message:
-			'Tell me about specific unique specific details about this case',
+		message: 'Tell me about specific unique specific details about this case',
 	},
 	{
 		heading: 'Find out Judgement',
@@ -27,9 +26,9 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 	const newMessageMutation = trpc.documentQuery.chat.useMutation({
 		onMutate: async ({ query, case_number }) => {
 			await queryClient.cancelQueries({ queryKey: ['messages'] });
-			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
-				['messages'],
-			);
+			let previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
 
 			let FirstMessage: MessageInterface = {
 				content_message: `Starting chat for Case Number - ${case_number}`,
@@ -81,9 +80,9 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 			);
 		},
 		onError: (error) => {
-			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
-				['messages'],
-			);
+			let previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
 			console.log(error);
 			let ErrorMessage: MessageInterface = {
 				content_message: error.message,
@@ -98,9 +97,9 @@ export function EmptyScreen({ case_number }: { case_number: string }) {
 			);
 		},
 		onSuccess(data) {
-			let previousMessages = queryClient.getQueryData<MessageInterface[]>(
-				['messages'],
-			);
+			let previousMessages = queryClient.getQueryData<MessageInterface[]>([
+				'messages',
+			]);
 
 			previousMessages?.pop();
 

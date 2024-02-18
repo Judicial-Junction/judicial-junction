@@ -40,9 +40,7 @@ const TextMessage: FC<ChatMessageProps> = ({ message }) => {
 						<div className="flex-shrink-0 flex flex-col relative items-end">
 							<Avatar radius="md" name="Bot" src={botImage} />
 						</div>
-						<pre className="whitespace-pre-line">
-							{formattedContent}
-						</pre>
+						<pre className="whitespace-pre-line">{formattedContent}</pre>
 					</div>
 				</div>
 			) : (
@@ -58,9 +56,7 @@ const TextMessage: FC<ChatMessageProps> = ({ message }) => {
 								}
 							/>
 						</div>
-						<pre className="whitespace-pre-line">
-							{formattedContent}
-						</pre>
+						<pre className="whitespace-pre-line">{formattedContent}</pre>
 					</div>
 				</div>
 			)}

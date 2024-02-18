@@ -29,12 +29,7 @@ export default function Navbar() {
 
 			<NavbarContent className="hidden sm:flex  pl-52" justify="center">
 				<NavbarItem>
-					<Link
-						href="#"
-						color="foreground"
-						aria-current="page"
-						as={NextLink}
-					>
+					<Link href="#" color="foreground" aria-current="page" as={NextLink}>
 						<p className="text-[18px]">About</p>
 					</Link>
 				</NavbarItem>
@@ -47,9 +42,7 @@ export default function Navbar() {
 				<Link color="secondary" className="" href="/" as={NextLink}>
 					<NavbarBrand>
 						<AcmeLogo />
-						<p className="font-bold text-inherit">
-							Digital Adhivakta
-						</p>
+						<p className="font-bold text-inherit">Digital Adhivakta</p>
 					</NavbarBrand>
 				</Link>
 			</NavbarContent>
@@ -68,8 +61,7 @@ export default function Navbar() {
 							color={
 								index === 0
 									? 'warning'
-									: index ===
-									  siteConfig.navMenuItems.length - 1
+									: index === siteConfig.navMenuItems.length - 1
 									? 'danger'
 									: 'foreground'
 							}

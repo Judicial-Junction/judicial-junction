@@ -63,22 +63,14 @@ export default function Response({ data }: { data: SearchResponse[] }) {
 						>
 							<ModalContent>
 								<ModalHeader className="flex flex-col">
-									<h1 className="text-xl">
-										{result.fields['Case Title'][0]}
-									</h1>
+									<h1 className="text-xl">{result.fields['Case Title'][0]}</h1>
 									<div className="text-sm flex font-light gap-2">
-										<h4>
-											{result.fields['Case Number'][0]}
-										</h4>
-										<h4>
-											{result.fields['Judgement Date'][0]}
-										</h4>
+										<h4>{result.fields['Case Number'][0]}</h4>
+										<h4>{result.fields['Judgement Date'][0]}</h4>
 									</div>
 								</ModalHeader>
 								{result.fields['Judgement Text'] && (
-									<ModalBody>
-										{result.fields['Judgement Text'][0]}
-									</ModalBody>
+									<ModalBody>{result.fields['Judgement Text'][0]}</ModalBody>
 								)}
 								<ModalFooter className="gap-4">
 									<Button
@@ -87,14 +79,8 @@ export default function Response({ data }: { data: SearchResponse[] }) {
 										variant="bordered"
 										as={Link}
 										isExternal
-										startContent={
-											<FileIcon className="h-4 w-4" />
-										}
-										href={
-											result.fields[
-												'Judgement PDF URL'
-											][0]
-										}
+										startContent={<FileIcon className="h-4 w-4" />}
+										href={result.fields['Judgement PDF URL'][0]}
 									>
 										View PDF
 									</Button>
