@@ -8,7 +8,7 @@
 
 ## Built with
 
--   [Next.Js](https://nextjs.org/)
--   [Prisma](https://www.prisma.io/)
--   [tRPC](https://trpc.io/)
--   [NextUI](https://nextui.org/)
+- [Next.Js](https://nextjs.org/)
+- [Prisma](https://www.prisma.io/)
+- [tRPC](https://trpc.io/)
+- [NextUI](https://nextui.org/)

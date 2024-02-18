@@ -7,8 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"db:studio": "prisma studio",
-		"db:push": "prisma db push"
+		"format": "prettier --write $staged --ignore-path .gitignore",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@nextui-org/avatar": "^2.0.24",
@@ -49,6 +49,8 @@
 		"autoprefixer": "10.4.15",
 		"eslint": "8.49.0",
 		"eslint-config-next": "14.0.3",
+		"git-format-staged": "^3.0.0",
+		"husky": "^9.0.11",
 		"postcss": "8.4.30",
 		"prettier": "3.0.3",
 		"tailwindcss": "3.3.3",
