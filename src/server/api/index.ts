@@ -7,7 +7,7 @@ export const appRouter = createTRPCRouter({
 		return 'Just checking trpc';
 	}),
 	search_router,
-	documentQuerying: publicProcedure
+	documentQuery: publicProcedure
 		.input(z.object({ query: z.string(), case_number: z.string() }))
 		.mutation(async () => {
 			return 'Not Implemented';
