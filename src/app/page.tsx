@@ -4,7 +4,7 @@ import GreetingText from './_components/Landing/GreetingText';
 import ImageMapCard from './_components/Landing/ImageMapCard';
 import ImageCard from './_components/Landing/ImageSearchCard';
 import TextAnimation from './_components/Landing/text';
-import { subtitle, title } from './_components/primitives';
+import { subtitle } from './_components/primitives';
 export default function Home() {
 	return (
 		<>

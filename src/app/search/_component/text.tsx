@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ExampleQuery from './example';
 import SearchSelection from './selection';
 import Response from './response';
+import { FormEvent } from 'react';
 
 export default function SearchText() {
 	const mut = trpc.search_router.opensearch.useMutation();
@@ -17,7 +18,7 @@ export default function SearchText() {
 		useState<ValidSearchType>('Semantic Search');
 	// const [cases, setcases] = useState((mut.data || []) as any[]);
 
-	const HandleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+	const HandleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (input === '') return;
 		mut.mutate({ search_term: input, search_type: searchType });

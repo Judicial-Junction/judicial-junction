@@ -1,4 +1,5 @@
 import { SVGProps } from 'react';
+import { FC } from 'react';
 
 type IconSvgProps = SVGProps<SVGSVGElement> & {
 	size?: number;
@@ -89,7 +90,7 @@ export const AcmeLogo = () => (
 	</svg>
 );
 
-export const GithubIcon: React.FC<IconSvgProps> = ({
+export const GithubIcon: FC<IconSvgProps> = ({
 	size = 24,
 	width,
 	height,
@@ -112,8 +113,9 @@ export const GithubIcon: React.FC<IconSvgProps> = ({
 	);
 };
 
-export const RedUserIcon: React.FC<IconSvgProps> = (props) => (
+export const RedUserIcon: FC<IconSvgProps> = (props) => (
 	<svg
+		{...props}
 		width="256px"
 		height="256px"
 		viewBox="-2.4 -2.4 28.80 28.80"
@@ -163,8 +165,9 @@ export const RedUserIcon: React.FC<IconSvgProps> = (props) => (
 	</svg>
 );
 
-export const GreenUserIcon: React.FC<IconSvgProps> = (props) => (
+export const GreenUserIcon: FC<IconSvgProps> = (props) => (
 	<svg
+		{...props}
 		width="256px"
 		height="256px"
 		viewBox="-2.4 -2.4 28.80 28.80"
@@ -214,7 +217,7 @@ export const GreenUserIcon: React.FC<IconSvgProps> = (props) => (
 	</svg>
 );
 
-export const IconArrowRight: React.FC<IconSvgProps> = (props) => {
+export const IconArrowRight: FC<IconSvgProps> = (props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +232,7 @@ export const IconArrowRight: React.FC<IconSvgProps> = (props) => {
 	);
 };
 
-export const IconArrowElbow: React.FC<IconSvgProps> = (props) => {
+export const IconArrowElbow: FC<IconSvgProps> = (props) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -244,9 +247,10 @@ export const IconArrowElbow: React.FC<IconSvgProps> = (props) => {
 	);
 };
 
-export const ChatIcon: React.FC<IconSvgProps> = (props) => {
+export const ChatIcon: FC<IconSvgProps> = (props) => {
 	return (
 		<svg
+			{...props}
 			height={60}
 			width={60}
 			viewBox="0 0 1024 1024"
@@ -289,7 +293,7 @@ export const ChatIcon: React.FC<IconSvgProps> = (props) => {
 	);
 };
 
-export const ChevronDown: React.FC<IconSvgProps> = ({
+export const ChevronDown: FC<IconSvgProps> = ({
 	fill,
 	size,
 	height,
@@ -324,9 +328,10 @@ export const SearchIcon = ({
 	...props
 }: IconSvgProps) => (
 	<svg
+		{...props}
 		viewBox="0 0 24 24"
-		height={size}
-		width={size}
+		height={size || height}
+		width={size || width}
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 		stroke="#0084ff"
@@ -357,9 +362,10 @@ export const MapIcon = ({
 	...props
 }: IconSvgProps) => (
 	<svg
+		{...props}
 		viewBox="0 0 24 24"
-		height={size}
-		width={size}
+		height={size || height}
+		width={size || width}
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 	>
@@ -386,10 +392,11 @@ export const MarketIcon = ({
 	...props
 }: IconSvgProps) => (
 	<svg
+		{...props}
 		fill="#db0000"
 		viewBox="0 0 1000 1000"
-		height={size}
-		width={size}
+		height={size || height}
+		width={size || width}
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<g id="SVGRepo_bgCarrier" stroke-width="0"></g>

@@ -4,6 +4,7 @@ import { Key, useState } from 'react';
 export default function SearchSelection({
 	UpdateFunc,
 }: {
+	// eslint-disable-next-line no-unused-vars
 	UpdateFunc: (key: ValidSearchType) => void;
 }) {
 	const [selected, setSelected] = useState('WordEmbedding');

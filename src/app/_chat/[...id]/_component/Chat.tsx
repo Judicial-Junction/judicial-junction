@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import ChatInput from './ChatInput';
 import TextMessage from './Text';
 import { EmptyScreen } from './empty_screen';
@@ -22,10 +22,6 @@ export default function MainChat({ case_number }: { case_number: string }) {
 	useEffect(() => {
 		bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
 	}, [data]);
-
-	const ScrollintoView = () => {
-		bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-	};
 
 	return (
 		<>

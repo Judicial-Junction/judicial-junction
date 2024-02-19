@@ -8,7 +8,7 @@ import {
 	DropdownTrigger,
 } from '@nextui-org/dropdown';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapIcon, MarketIcon, SearchIcon } from '../icons';
+import { ChevronDown, MapIcon, SearchIcon } from '../icons';
 export default function FeaturesDropdownLanding() {
 	const router = useRouter();
 
