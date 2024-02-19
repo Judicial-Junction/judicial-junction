@@ -1,1 +1,1 @@
-pnpm git-format-staged -f 'prettier --ignore-path .gitignore --stdin --stdin-filepath \"{}\"' .
+pnpm check

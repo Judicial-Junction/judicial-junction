@@ -115,9 +115,6 @@ devDependencies:
   eslint-config-next:
     specifier: 14.0.3
     version: 14.0.3(eslint@8.49.0)(typescript@5.2.2)
-  git-format-staged:
-    specifier: ^3.0.0
-    version: 3.0.0
   husky:
     specifier: ^9.0.11
     version: 9.0.11
@@ -4770,14 +4767,6 @@ packages:
       }
     dependencies:
       resolve-pkg-maps: 1.0.0
-    dev: true
-
-  /git-format-staged@3.0.0:
-    resolution:
-      {
-        integrity: sha512-cdDJxV06qY8ucBsW/uIFR4PYN/kDHl43nG8yg+VPPaDeLAf8hEPhEIJTeJ+yRClxcDSpoTmDPiFZUoxFx1wPCg==,
-      }
-    hasBin: true
     dev: true
 
   /glob-parent@5.1.2:

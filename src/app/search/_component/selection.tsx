@@ -18,11 +18,10 @@ export default function SearchSelection({
 
 	return (
 		<Tabs
-			color="primary"
-			variant="solid"
+			color="secondary"
+			variant="underlined"
 			selectedKey={selected}
 			onSelectionChange={HandleChange}
-			disabledKeys={['Sentence Similarity']}
 		>
 			<Tab key="Fuzzy Search" title="Fuzzy search"></Tab>
 			<Tab key="Sentence Similarity" title="Setence similarity"></Tab>
