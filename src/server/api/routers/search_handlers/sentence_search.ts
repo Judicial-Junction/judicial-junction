@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs';
-import { SearchResponse } from '../search_utils';
+import { SearchResponse, removeDuplicatesByScore } from '../search_utils';
 import { TRPCError } from '@trpc/server';
 
 export default async function SentenceSearchMutation(input: string) {
@@ -21,8 +21,12 @@ export default async function SentenceSearchMutation(input: string) {
 				body: raw,
 			},
 		);
-		const result = await response.json();
-		return result as SearchResponse[];
+		const result = (await response.json()) as SearchResponse[];
+		result.forEach((val) => {
+			val.search_type = 'Sentence Similarity';
+			val.search_query = input;
+		});
+		return removeDuplicatesByScore(result);
 	} catch (error) {
 		console.log(error);
 		throw new TRPCError({
