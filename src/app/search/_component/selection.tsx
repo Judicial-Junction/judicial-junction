@@ -24,8 +24,8 @@ export default function SearchSelection({
 			selectedKey={selected}
 			onSelectionChange={HandleChange}
 		>
-			<Tab key="Fuzzy Search" title="Fuzzy search"></Tab>
-			<Tab key="Sentence Similarity" title="Setence similarity"></Tab>
+			<Tab key="Fuzzy Search" title="Keyword search"></Tab>
+			<Tab key="Sentence Similarity" title="Sentence similarity"></Tab>
 			<Tab key="Semantic Search" title="Semantic search"></Tab>
 		</Tabs>
 	);
