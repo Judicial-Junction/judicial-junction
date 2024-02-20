@@ -1,3 +1,4 @@
+import { env } from '@/env.mjs';
 import { SearchResponse } from '../search_utils';
 import { TRPCError } from '@trpc/server';
 
@@ -13,7 +14,7 @@ export default async function SemanticSearchMutation(input: string) {
 
 	try {
 		const response = await fetch(
-			'http://ec2-3-108-192-195.ap-south-1.compute.amazonaws.com:8000/semantic_similarity',
+			`http://${env.EMBEDDING_SERVER_HOST}:8000/semantic_similarity`,
 			{
 				method: 'POST',
 				headers: myHeaders,
