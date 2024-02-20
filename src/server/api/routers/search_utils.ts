@@ -4,20 +4,22 @@ interface SearchResponseFields {
 	'Judgement Date': string[];
 	'Case Title': string[];
 	'Judgement Text'?: string[];
-	Sentence?: string[];
-}
-
-export interface SearchResponse {
-	_id: string;
-	_index: string;
-	_score: number;
-	fields: SearchResponseFields;
+	Sentences?: [string, string, string, string, string];
 }
 
 export type ValidSearchType =
 	| 'Fuzzy Search'
 	| 'Sentence Similarity'
 	| 'Semantic Search';
+
+export interface SearchResponse {
+	_id: string;
+	_index: string;
+	_score: number;
+	search_query: string;
+	fields: SearchResponseFields;
+	search_type?: ValidSearchType;
+}
 
 export const removeDuplicatesByScore = (searchResponses: SearchResponse[]) => {
 	const unique = new Set<number>();

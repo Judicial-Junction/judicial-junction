@@ -18,7 +18,7 @@ export default function Navbar() {
 	return (
 		<NextUINavbar shouldHideOnScroll>
 			<NavbarBrand className="hidden sm:flex">
-				<Link color="secondary" className="" href="/" as={NextLink}>
+				<Link color="foreground" className="" href="/" as={NextLink}>
 					<AcmeLogo />
 				</Link>
 			</NavbarBrand>

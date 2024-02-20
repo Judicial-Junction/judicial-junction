@@ -11,6 +11,34 @@ import {
 	ModalHeader,
 	useDisclosure,
 } from '@nextui-org/modal';
+import { closest } from 'fastest-levenshtein';
+import { useMemo } from 'react';
+
+function FindFuzzyWord(searched_keyword: string, case_text: string) {
+	const wordsArray = case_text.split(/\s+/);
+	const closest_word = closest(searched_keyword, wordsArray);
+	const targetIndex = wordsArray.findIndex((word) =>
+		word.includes(closest_word),
+	);
+	const prevSentence = wordsArray
+		.slice(Math.max(targetIndex - 15, 0), targetIndex)
+		.join(' ');
+	if (targetIndex + 16 >= wordsArray.length)
+		return [prevSentence, closest_word, ''] as [string, string, string];
+	return [
+		prevSentence,
+		closest_word,
+		wordsArray.slice(targetIndex + 1, targetIndex + 16).join(' '),
+	] as [string, string, string];
+}
+
+function GetFuzzySentence(keyword: string, judgement_text: string) {
+	const sentencesToDisplay = useMemo(
+		() => FindFuzzyWord(keyword, judgement_text),
+		[keyword, judgement_text],
+	);
+	return sentencesToDisplay;
+}
 
 export default function Response({ data }: { data: SearchResponse[] }) {
 	return (
@@ -70,7 +98,60 @@ export default function Response({ data }: { data: SearchResponse[] }) {
 									</div>
 								</ModalHeader>
 								{result.fields['Judgement Text'] && (
-									<ModalBody>{result.fields['Judgement Text'][0]}</ModalBody>
+									<ModalBody>
+										{result.search_type == 'Fuzzy Search' && (
+											<>
+												<p className="font-semibold text-warning">
+													Below is the segment of judgement text that contains
+													your searched word.
+												</p>
+												<p>
+													{'...' +
+														GetFuzzySentence(
+															result.search_query,
+															result.fields['Judgement Text'][0],
+														)[0] +
+														' '}
+													<mark className="bg-slate-700: dark:bg-slate-300">
+														{
+															GetFuzzySentence(
+																result.search_query,
+																result.fields['Judgement Text'][0],
+															)[1]
+														}
+													</mark>
+													{' ' +
+														GetFuzzySentence(
+															result.search_query,
+															result.fields['Judgement Text'][0],
+														)[2] +
+														'...'}
+												</p>
+											</>
+										)}
+										<p className="font-semibold text-warning">
+											Below is full case Text for the following case.
+										</p>
+										<pre className="whitespace-pre-line">
+											{result.fields['Judgement Text'][0]}
+										</pre>
+									</ModalBody>
+								)}
+								{result.fields['Sentences'] && (
+									<ModalBody>
+										<p className="font-light text-warning">
+											Similar Sentence is highlighted below.
+										</p>
+										<p>
+											{result.fields.Sentences[0] + ' '}
+											{result.fields.Sentences[1] + ' '}
+											<mark className="bg-grap-700: dark:bg-slate-300">
+												{result.fields.Sentences[2] + ' '}
+											</mark>
+											{result.fields.Sentences[3] + ' '}
+											{result.fields.Sentences[4]}
+										</p>
+									</ModalBody>
 								)}
 								<ModalFooter className="gap-4">
 									<Button

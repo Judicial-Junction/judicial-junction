@@ -4,11 +4,12 @@ import { ValidSearchType } from '@/server/api/routers/search_utils';
 import { Button } from '@nextui-org/button';
 import { Divider } from '@nextui-org/divider';
 import { Textarea } from '@nextui-org/input';
-import { Spinner } from '@nextui-org/spinner';
 import { useState } from 'react';
 import ExampleQuery from './example';
 import SearchSelection from './selection';
 import Response from './response';
+import { FormEvent } from 'react';
+import SearchLoading from './loading';
 
 export default function SearchText() {
 	const mut = trpc.search_router.opensearch.useMutation();
@@ -17,7 +18,7 @@ export default function SearchText() {
 		useState<ValidSearchType>('Semantic Search');
 	// const [cases, setcases] = useState((mut.data || []) as any[]);
 
-	const HandleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+	const HandleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (input === '') return;
 		mut.mutate({ search_term: input, search_type: searchType });
@@ -64,11 +65,7 @@ export default function SearchText() {
 			)}
 
 			<div className="mt-10">
-				{mut.isLoading && (
-					<div className="">
-						<Spinner size="lg" color="warning" />
-					</div>
-				)}
+				{mut.isLoading && <SearchLoading />}
 				{mut.isError && (
 					<div className="text-danger">
 						An error occurred: {mut.error.message}

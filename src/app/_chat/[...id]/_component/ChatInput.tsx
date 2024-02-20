@@ -1,17 +1,18 @@
 import { IconArrowElbow } from '@/app/_components/icons';
 import { trpc } from '@/app/_trpc/client';
 import { Button } from '@nextui-org/button';
-import { Input, Textarea } from '@nextui-org/input';
+import { Textarea } from '@nextui-org/input';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { MessageInterface } from './Chat';
+import React from 'react';
 
 export default function ChatInput({ case_number }: { case_number: string }) {
 	const queryClient = useQueryClient();
 	const [inputMessage, setinputMessage] = useState('');
 
 	const newMessageMutation = trpc.documentQuery.useMutation({
-		onMutate: async ({ query, case_number }) => {
+		onMutate: async ({ query }) => {
 			await queryClient.cancelQueries({ queryKey: ['messages'] });
 			let previousMessages = queryClient.getQueryData<MessageInterface[]>([
 				'messages',

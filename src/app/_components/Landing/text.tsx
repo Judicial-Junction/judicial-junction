@@ -16,7 +16,7 @@ export default function TextAnimation() {
 				]}
 				speed={50}
 				omitDeletionAnimation={true}
-				className="font-bold text-[2.8em] text-warning"
+				className="font-bold text-[2.8em]"
 				repeat={Infinity}
 			/>
 		</>

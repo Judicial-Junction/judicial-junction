@@ -1,4 +1,5 @@
-import { SearchResponse } from '../search_utils';
+import { env } from '@/env.mjs';
+import { SearchResponse, removeDuplicatesByScore } from '../search_utils';
 import { TRPCError } from '@trpc/server';
 
 export default async function SemanticSearchMutation(input: string) {
@@ -13,15 +14,19 @@ export default async function SemanticSearchMutation(input: string) {
 
 	try {
 		const response = await fetch(
-			'http://ec2-3-108-192-195.ap-south-1.compute.amazonaws.com:8000/semantic_similarity',
+			`http://${env.EMBEDDING_SERVER_HOST}:8000/semantic_similarity`,
 			{
 				method: 'POST',
 				headers: myHeaders,
 				body: raw,
 			},
 		);
-		const result = await response.json();
-		return result as SearchResponse[];
+		const result = (await response.json()) as SearchResponse[];
+		result.forEach((val) => {
+			val.search_type = 'Semantic Search';
+			val.search_query = input;
+		});
+		return removeDuplicatesByScore(result);
 	} catch (error) {
 		console.log(error);
 		throw new TRPCError({

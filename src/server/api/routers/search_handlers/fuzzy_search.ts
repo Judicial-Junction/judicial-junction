@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs';
-import { SearchResponse } from '../search_utils';
+import { SearchResponse, removeDuplicatesByScore } from '../search_utils';
 import { TRPCError } from '@trpc/server';
 
 export default async function FuzzySearchMutation(input: string) {
@@ -42,9 +42,13 @@ export default async function FuzzySearchMutation(input: string) {
 			},
 		);
 
-		const result = await response.json();
+		const result = (await response.json()).hits.hits as SearchResponse[];
 		process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
-		return result.hits.hits as SearchResponse[];
+		result.forEach((val) => {
+			val.search_type = 'Fuzzy Search';
+			val.search_query = input;
+		});
+		return removeDuplicatesByScore(result);
 	} catch (error) {
 		console.log(error);
 		process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';

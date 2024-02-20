@@ -5,8 +5,7 @@ import clsx from 'clsx';
 import type { Metadata } from 'next';
 import Navbar from './_components/Navbar/navbar';
 import { Providers } from './providers';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
 	title: {
@@ -21,11 +20,7 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
 			<head />
@@ -41,8 +36,6 @@ export default function RootLayout({
 						{children}
 					</div>
 				</Providers>
-				<Analytics />
-				<SpeedInsights />
 			</body>
 		</html>
 	);

@@ -4,6 +4,7 @@ import { Key, useState } from 'react';
 export default function SearchSelection({
 	UpdateFunc,
 }: {
+	// eslint-disable-next-line no-unused-vars
 	UpdateFunc: (key: ValidSearchType) => void;
 }) {
 	const [selected, setSelected] = useState('WordEmbedding');
@@ -18,14 +19,13 @@ export default function SearchSelection({
 
 	return (
 		<Tabs
-			color="primary"
-			variant="solid"
+			color="secondary"
+			variant="underlined"
 			selectedKey={selected}
 			onSelectionChange={HandleChange}
-			disabledKeys={['Sentence Similarity']}
 		>
-			<Tab key="Fuzzy Search" title="Fuzzy search"></Tab>
-			<Tab key="Sentence Similarity" title="Setence similarity"></Tab>
+			<Tab key="Fuzzy Search" title="Keyword search"></Tab>
+			<Tab key="Sentence Similarity" title="Sentence similarity"></Tab>
 			<Tab key="Semantic Search" title="Semantic search"></Tab>
 		</Tabs>
 	);

@@ -2,7 +2,6 @@ import { IconArrowRight } from '@/app/_components/icons';
 import { trpc } from '@/app/_trpc/client';
 import { Link } from '@nextui-org/link';
 import { useQueryClient } from '@tanstack/react-query';
-import clsx from 'clsx';
 import { MessageInterface } from './Chat';
 
 const exampleMessages = [

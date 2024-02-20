@@ -26,6 +26,8 @@ export const env = createEnv({
 		OPENSEARCH_PORT: z.string(),
 		OPENSEARCH_USER: z.string(),
 		OPENSEARCH_PASSWORD: z.string(),
+		OPENAI_API_KEY: z.string(),
+		EMBEDDING_SERVER_HOST: z.string(),
 	},
 
 	/**
@@ -49,6 +51,8 @@ export const env = createEnv({
 		OPENSEARCH_PORT: process.env.OPENSEARCH_PORT,
 		OPENSEARCH_USER: process.env.OPENSEARCH_USER,
 		OPENSEARCH_PASSWORD: process.env.OPENSEARCH_PASSWORD,
+		OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+		EMBEDDING_SERVER_HOST: process.env.EMBEDDING_SERVER_HOST,
 	},
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
