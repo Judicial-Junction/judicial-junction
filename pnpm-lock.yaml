@@ -59,15 +59,12 @@ dependencies:
   '@trpc/server':
     specifier: ^10.38.3
     version: 10.38.3
-  '@vercel/analytics':
-    specifier: ^1.1.2
-    version: 1.1.2
-  '@vercel/speed-insights':
-    specifier: ^1.0.9
-    version: 1.0.9(next@14.0.3)(react@18.2.0)
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
+  fastest-levenshtein:
+    specifier: ^1.0.16
+    version: 1.0.16
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -6597,46 +6594,6 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vercel/analytics@1.1.2:
-    resolution:
-      {
-        integrity: sha512-CodhkLCQ/EHzjX8k+Qg+OzTBY0UadykrcfolfSOJVZZY/ZJM5nbhztm9KdbYvMfqKlasAr1+OYy0ThZnDA/MYA==,
-      }
-    dependencies:
-      server-only: 0.0.1
-    dev: false
-
-  /@vercel/speed-insights@1.0.9(next@14.0.3)(react@18.2.0):
-    resolution:
-      {
-        integrity: sha512-f+XFP0O+aZ4Olj9h+BitkB1b4NJQaxtyCb69wWuDxytJHY6Pa4QtZPdBUftHOcajUCHRVeq062fk3MKXKtjNVQ==,
-      }
-    requiresBuild: true
-    peerDependencies:
-      '@sveltejs/kit': ^1 || ^2
-      next: '>= 13'
-      react: ^18 || ^19
-      svelte: ^4
-      vue: ^3
-      vue-router: ^4
-    peerDependenciesMeta:
-      '@sveltejs/kit':
-        optional: true
-      next:
-        optional: true
-      react:
-        optional: true
-      svelte:
-        optional: true
-      vue:
-        optional: true
-      vue-router:
-        optional: true
-    dependencies:
-      next: 14.0.3(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
   /@whatwg-node/events@0.0.2:
     resolution:
       {
@@ -9031,6 +8988,14 @@ packages:
     dependencies:
       strnum: 1.0.5
     dev: true
+
+  /fastest-levenshtein@1.0.16:
+    resolution:
+      {
+        integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==,
+      }
+    engines: { node: '>= 4.9.1' }
+    dev: false
 
   /fastq@1.15.0:
     resolution:
@@ -12275,13 +12240,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /server-only@0.0.1:
-    resolution:
-      {
-        integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==,
-      }
-    dev: false
 
   /set-function-length@1.1.1:
     resolution:
