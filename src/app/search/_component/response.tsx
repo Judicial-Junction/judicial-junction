@@ -72,6 +72,16 @@ export default function Response({ data }: { data: SearchResponse[] }) {
 								{result.fields['Judgement Text'] && (
 									<ModalBody>{result.fields['Judgement Text'][0]}</ModalBody>
 								)}
+								{result.fields['Sentences'] && (
+									<ModalBody>
+										<p className="font-light text-warning">
+											Similar Sentence is highlighted below.
+										</p>
+										<p>{result.fields.Sentences[0]}</p>
+										<p className="font-bold">{result.fields.Sentences[1]}</p>
+										<p>{result.fields.Sentences[2]}</p>
+									</ModalBody>
+								)}
 								<ModalFooter className="gap-4">
 									<Button
 										color="secondary"
