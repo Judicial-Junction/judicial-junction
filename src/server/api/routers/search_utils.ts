@@ -4,7 +4,7 @@ interface SearchResponseFields {
 	'Judgement Date': string[];
 	'Case Title': string[];
 	'Judgement Text'?: string[];
-	Sentence?: string[];
+	Sentences?: [string, string, string];
 }
 
 export interface SearchResponse {
