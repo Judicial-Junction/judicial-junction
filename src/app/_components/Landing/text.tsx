@@ -1,24 +1,24 @@
-'use client';
-import { TypeAnimation } from 'react-type-animation';
+"use client";
+import { TypeAnimation } from "react-type-animation";
 
 export default function TextAnimation() {
-	return (
-		<>
-			<TypeAnimation
-				preRenderFirstString={true}
-				sequence={[
-					'Hire any Lawyer that you like',
-					1000,
-					'Use our AI for your Legal Issues',
-					1000,
-					'All solutions for your Legal Problems',
-					1000,
-				]}
-				speed={50}
-				omitDeletionAnimation={true}
-				className="font-bold text-[2.8em]"
-				repeat={Infinity}
-			/>
-		</>
-	);
+  return (
+    <>
+      <TypeAnimation
+        preRenderFirstString={true}
+        sequence={[
+          "Hire any Lawyer that you like",
+          1000,
+          "Use our AI for your Legal Issues",
+          1000,
+          "All solutions for your Legal Problems",
+          1000,
+        ]}
+        speed={50}
+        omitDeletionAnimation={true}
+        className="text-[2.8em] font-bold"
+        repeat={Infinity}
+      />
+    </>
+  );
 }

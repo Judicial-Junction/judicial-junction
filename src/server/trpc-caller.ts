@@ -1,5 +1,5 @@
-import 'server-only';
+import "server-only";
 
-import { appRouter } from './api';
+import { appRouter } from "./api";
 
 export const serverTrpc = appRouter.createCaller({});
