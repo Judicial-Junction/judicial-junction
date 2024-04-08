@@ -13,6 +13,7 @@ export default {
     app.stack(function Site({ stack }) {
       const site = new NextjsSite(stack, "site", {
         logging: "combined",
+        timeout: "60 seconds",
       });
 
       stack.addOutputs({
