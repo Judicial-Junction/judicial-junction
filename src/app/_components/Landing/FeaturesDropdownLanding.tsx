@@ -1,20 +1,20 @@
-'use client';
-import { Button } from '@nextui-org/button';
+"use client";
+import { Button } from "@nextui-org/button";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
-} from '@nextui-org/dropdown';
-import { useRouter } from 'next/navigation';
-import { ChevronDown, MapIcon, SearchIcon } from '../icons';
+} from "@nextui-org/dropdown";
+import { useRouter } from "next/navigation";
+import { ChevronDown, MapIcon, SearchIcon } from "../icons";
 export default function FeaturesDropdownLanding() {
   const router = useRouter();
 
-  if (typeof window !== 'undefined') {
-    router.prefetch('/search');
-    router.prefetch('/manya');
+  if (typeof window !== "undefined") {
+    router.prefetch("/search");
+    router.prefetch("/manya");
   }
 
   return (
@@ -22,7 +22,7 @@ export default function FeaturesDropdownLanding() {
       <DropdownTrigger>
         <Button
           disableRipple
-          className="p-0 w-[100px] data-[hover=true]:bg-transparent"
+          className="w-[100px] p-0 data-[hover=true]:bg-transparent"
           radius="sm"
           variant="bordered"
           endContent={<ChevronDown />}
@@ -35,7 +35,7 @@ export default function FeaturesDropdownLanding() {
         aria-label="Digital Adhivakta features"
         className="w-[340px]"
         itemClasses={{
-          base: 'gap-4',
+          base: "gap-4",
         }}
         variant="light"
         onAction={(key) => router.push(`${key}`)}

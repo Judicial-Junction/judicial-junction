@@ -1,16 +1,16 @@
 interface SearchResponseFields {
-  'Judgement PDF URL': string[];
-  'Case Number': string[];
-  'Judgement Date': string[];
-  'Case Title': string[];
-  'Judgement Text'?: string[];
+  "Judgement PDF URL": string[];
+  "Case Number": string[];
+  "Judgement Date": string[];
+  "Case Title": string[];
+  "Judgement Text"?: string[];
   Sentences?: [string, string, string, string, string];
 }
 
 export type ValidSearchType =
-  | 'Fuzzy Search'
-  | 'Sentence Similarity'
-  | 'Semantic Search';
+  | "Fuzzy Search"
+  | "Sentence Similarity"
+  | "Semantic Search";
 
 export interface SearchResponse {
   _id: string;

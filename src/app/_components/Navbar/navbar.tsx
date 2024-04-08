@@ -1,5 +1,5 @@
-import { siteConfig } from '@/config/site';
-import { Link } from '@nextui-org/link';
+import { siteConfig } from "@/config/site";
+import { Link } from "@nextui-org/link";
 import {
   NavbarBrand,
   NavbarContent,
@@ -8,11 +8,11 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Navbar as NextUINavbar,
-} from '@nextui-org/navbar';
-import NextLink from 'next/link';
-import { ThemeSwitcher } from '../ThemeSwitcher';
-import { AcmeLogo } from '../icons';
-import FeaturesDropdown from './FeaturesDropdown';
+} from "@nextui-org/navbar";
+import NextLink from "next/link";
+import { ThemeSwitcher } from "../ThemeSwitcher";
+import { AcmeLogo } from "../icons";
+import FeaturesDropdown from "./FeaturesDropdown";
 
 export default function Navbar() {
   return (
@@ -27,7 +27,7 @@ export default function Navbar() {
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex  pl-52" justify="center">
+      <NavbarContent className="hidden pl-52  sm:flex" justify="center">
         <NavbarItem>
           <Link href="#" color="foreground" aria-current="page" as={NextLink}>
             <p className="text-[18px]">About</p>
@@ -38,7 +38,7 @@ export default function Navbar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden pr-3" justify="center">
+      <NavbarContent className="pr-3 sm:hidden" justify="center">
         <Link color="secondary" className="" href="/" as={NextLink}>
           <NavbarBrand>
             <AcmeLogo />
@@ -55,15 +55,15 @@ export default function Navbar() {
 
       <NavbarMenu>
         {siteConfig.navMenuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={index}>
             <Link
               className="w-full"
               color={
                 index === 0
-                  ? 'warning'
+                  ? "warning"
                   : index === siteConfig.navMenuItems.length - 1
-                  ? 'danger'
-                  : 'foreground'
+                  ? "danger"
+                  : "foreground"
               }
               href={item.href}
               size="lg"

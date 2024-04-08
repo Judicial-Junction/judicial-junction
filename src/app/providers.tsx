@@ -1,14 +1,14 @@
-'use client';
-import { trpc } from '@/app/_trpc/client';
-import { NextUIProvider } from '@nextui-org/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { httpBatchLink } from '@trpc/client';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import React, { useState } from 'react';
-import SuperJSON from 'superjson';
+"use client";
+import { trpc } from "@/app/_trpc/client";
+import { NextUIProvider } from "@nextui-org/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { httpBatchLink } from "@trpc/client";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import React, { useState } from "react";
+import SuperJSON from "superjson";
 
 function getBaseUrl() {
-  if (typeof window !== 'undefined') return '';
+  if (typeof window !== "undefined") return "";
 
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 

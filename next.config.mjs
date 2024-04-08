@@ -1,14 +1,14 @@
-await import('./src/env.mjs');
+await import("./src/env.mjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/800/**',
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/800/**",
       },
     ],
   },

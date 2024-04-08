@@ -1,11 +1,11 @@
-import { fontSans } from '@/config/font';
-import { siteConfig } from '@/config/site';
-import '@/styles/globals.css';
-import clsx from 'clsx';
-import type { Metadata } from 'next';
-import Navbar from './_components/Navbar/navbar';
-import { Providers } from './providers';
-import { ReactNode } from 'react';
+import { fontSans } from "@/config/font";
+import { siteConfig } from "@/config/site";
+import "@/styles/globals.css";
+import clsx from "clsx";
+import type { Metadata } from "next";
+import { type ReactNode } from "react";
+import Navbar from "./_components/Navbar/navbar";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -26,12 +26,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
         <Providers>
-          <div className="min-h-screen bg-gradient-to-b from-primary flex flex-col">
+          <div className="flex min-h-screen flex-col bg-gradient-to-b from-primary">
             <Navbar />
             {children}
           </div>

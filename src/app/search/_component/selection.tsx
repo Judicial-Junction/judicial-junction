@@ -1,16 +1,16 @@
-import { ValidSearchType } from '@/server/api/routers/search_utils';
-import { Tabs, Tab } from '@nextui-org/tabs';
-import { Key, useState } from 'react';
+import { type ValidSearchType } from "@/server/api/routers/search_utils";
+import { Tab, Tabs } from "@nextui-org/tabs";
+import { useState, type Key } from "react";
 export default function SearchSelection({
   UpdateFunc,
 }: {
   // eslint-disable-next-line no-unused-vars
   UpdateFunc: (key: ValidSearchType) => void;
 }) {
-  const [selected, setSelected] = useState('WordEmbedding');
+  const [selected, setSelected] = useState("WordEmbedding");
 
   const HandleChange = (key: Key) => {
-    if (typeof key !== 'string') {
+    if (typeof key !== "string") {
       return;
     }
     setSelected(key);

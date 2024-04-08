@@ -1,13 +1,13 @@
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from "react-type-animation";
 export default function ExampleQuery() {
   return (
     <TypeAnimation
       sequence={[
-        'Tell me about previous Loan fraud ',
+        "Tell me about previous Loan fraud ",
         1000,
-        'Tell me about previous Insurance fraud ',
+        "Tell me about previous Insurance fraud ",
         1000,
-        'Tell me about previous Workplace Harassment',
+        "Tell me about previous Workplace Harassment",
         1000,
       ]}
       speed={50}

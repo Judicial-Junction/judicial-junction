@@ -1,5 +1,5 @@
-'use client';
-import { useEffect, useState } from 'react';
+"use client";
+import { useEffect, useState } from "react";
 export default function Map() {
   const [iframeHeight, setIframeHeight] = useState(800);
 
@@ -10,12 +10,12 @@ export default function Map() {
       setIframeHeight(windowHeight);
     };
 
-    window.addEventListener('resize', updateIframeHeight);
+    window.addEventListener("resize", updateIframeHeight);
 
     updateIframeHeight();
 
     return () => {
-      window.removeEventListener('resize', updateIframeHeight);
+      window.removeEventListener("resize", updateIframeHeight);
     };
   }, []);
 
@@ -23,7 +23,7 @@ export default function Map() {
     <iframe
       src="https://delhi-plot-kh6ujptkyvimoj3tjzrs2t.streamlit.app/?embed=true&embed_options=dark_theme&embed_options=disable_scrolling&"
       height={iframeHeight}
-      style={{ width: '100%', border: 'none' }}
+      style={{ width: "100%", border: "none" }}
     />
   );
 }

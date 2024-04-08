@@ -1,28 +1,27 @@
-'use client';
-import { trpc } from '@/app/_trpc/client';
-import { ValidSearchType } from '@/server/api/routers/search_utils';
-import { Button } from '@nextui-org/button';
-import { Divider } from '@nextui-org/divider';
-import { Textarea } from '@nextui-org/input';
-import { useState } from 'react';
-import ExampleQuery from './example';
-import SearchSelection from './selection';
-import Response from './response';
-import { FormEvent } from 'react';
-import SearchLoading from './loading';
+"use client";
+import { trpc } from "@/app/_trpc/client";
+import { type ValidSearchType } from "@/server/api/routers/search_utils";
+import { Button } from "@nextui-org/button";
+import { Divider } from "@nextui-org/divider";
+import { Textarea } from "@nextui-org/input";
+import { useState, type FormEvent } from "react";
+import ExampleQuery from "./example";
+import SearchLoading from "./loading";
+import Response from "./response";
+import SearchSelection from "./selection";
 
 export default function SearchText() {
   const mut = trpc.search_router.opensearch.useMutation();
-  const [input, setinput] = useState('');
+  const [input, setinput] = useState("");
   const [searchType, setSearchType] =
-    useState<ValidSearchType>('Semantic Search');
+    useState<ValidSearchType>("Semantic Search");
   // const [cases, setcases] = useState((mut.data || []) as any[]);
 
   const HandleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (input === '') return;
+    if (input === "") return;
     mut.mutate({ search_term: input, search_type: searchType });
-    setinput('');
+    setinput("");
   };
 
   const UpdateSearchType = (input: ValidSearchType) => {
@@ -41,7 +40,7 @@ export default function SearchText() {
           minRows={1}
           color="primary"
           variant="bordered"
-          className="overflow-x-hidden w-[250px] md:w-[480px] "
+          className="w-[250px] overflow-x-hidden md:w-[480px] "
           size="lg"
           value={input}
           onValueChange={setinput}
@@ -58,8 +57,8 @@ export default function SearchText() {
       </form>
 
       {!mut.isSuccess && !mut.isError && !mut.isLoading && (
-        <div className="mt-10 hidden sm:flex items-center flex-nowrap">
-          <p className="font-bold text-xl mr-1">Example Query : </p>
+        <div className="mt-10 hidden flex-nowrap items-center sm:flex">
+          <p className="mr-1 text-xl font-bold">Example Query : </p>
           <ExampleQuery />
         </div>
       )}

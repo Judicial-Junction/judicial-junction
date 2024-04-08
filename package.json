@@ -2,6 +2,7 @@
   "name": "judicial-junction",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "sst bind next dev",
     "build": "next build",
@@ -20,6 +21,7 @@
     "@nextui-org/image": "^2.0.24",
     "@nextui-org/input": "^2.1.16",
     "@nextui-org/link": "^2.0.26",
+    "@nextui-org/modal": "^2.0.28",
     "@nextui-org/navbar": "^2.0.27",
     "@nextui-org/react": "^2.2.9",
     "@nextui-org/spinner": "^2.0.24",
@@ -46,6 +48,8 @@
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "autoprefixer": "10.4.15",
     "aws-cdk-lib": "2.124.0",
     "constructs": "10.3.0",
@@ -56,6 +60,7 @@
     "husky": "^9.0.11",
     "postcss": "8.4.30",
     "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.13",
     "sst": "^2.40.3",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
