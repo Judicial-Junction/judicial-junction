@@ -5,7 +5,7 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import Navbar from "./_components/Navbar/navbar";
 import { Providers } from "./providers";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: {

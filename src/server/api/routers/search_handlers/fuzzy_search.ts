@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { SearchResponse, removeDuplicatesByScore } from "../search_utils";
+import { type SearchResponse, removeDuplicatesByScore } from "../search_utils";
 import { TRPCError } from "@trpc/server";
 
 export default async function FuzzySearchMutation(input: string) {
@@ -30,7 +30,7 @@ export default async function FuzzySearchMutation(input: string) {
     _source: false,
   });
 
-  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
   try {
     const response = await fetch(
@@ -42,8 +42,9 @@ export default async function FuzzySearchMutation(input: string) {
       },
     );
 
+    // eslint-disable-next-line
     const result = (await response.json()).hits.hits as SearchResponse[];
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "1";
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "1";
     result.forEach((val) => {
       val.search_type = "Fuzzy Search";
       val.search_query = input;
@@ -51,7 +52,7 @@ export default async function FuzzySearchMutation(input: string) {
     return removeDuplicatesByScore(result);
   } catch (error) {
     console.log(error);
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "1";
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "1";
     throw new TRPCError({
       message: "Connection to opensearch server failed",
       code: "INTERNAL_SERVER_ERROR",

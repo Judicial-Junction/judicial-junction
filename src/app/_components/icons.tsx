@@ -1,5 +1,5 @@
-import { SVGProps } from "react";
-import { FC } from "react";
+import { type SVGProps } from "react";
+import { type FC } from "react";
 
 type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -303,9 +303,9 @@ export const ChevronDown: FC<IconSvgProps> = ({
   return (
     <svg
       fill="currentColor"
-      height={size || height || 18}
+      height={size ?? height ?? 18}
       viewBox="0 0 24 24"
-      width={size || width || 18}
+      width={size ?? width ?? 18}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

@@ -55,7 +55,7 @@ export default function Navbar() {
 
       <NavbarMenu>
         {siteConfig.navMenuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={index}>
             <Link
               className="w-full"
               color={

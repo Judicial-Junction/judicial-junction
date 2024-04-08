@@ -17,6 +17,7 @@ export const openai_router = createTRPCRouter({
         },
       ],
     });
-    return response.choices[0].message.content as string;
+
+    return response.choices[0].message.content;
   }),
 });

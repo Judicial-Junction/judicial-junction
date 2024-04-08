@@ -1,4 +1,4 @@
-import { SearchResponse } from "@/server/api/routers/search_utils";
+import { type SearchResponse } from "@/server/api/routers/search_utils";
 import { Link } from "@nextui-org/link";
 import { closest } from "fastest-levenshtein";
 import { useMemo } from "react";
@@ -78,7 +78,7 @@ export default function Response({ data }: { data: SearchResponse[] }) {
                 </p>
               </div>
             )}
-          {result.fields["Sentences"] && (
+          {result.fields.Sentences && (
             <div className="text-left">
               <p>
                 {result.fields.Sentences[0] + " "}

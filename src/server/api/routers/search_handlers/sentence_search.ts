@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { SearchResponse, removeDuplicatesByScore } from "../search_utils";
+import { type SearchResponse, removeDuplicatesByScore } from "../search_utils";
 import { TRPCError } from "@trpc/server";
 
 export default async function SentenceSearchMutation(input: string) {

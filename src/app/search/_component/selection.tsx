@@ -1,6 +1,6 @@
-import { ValidSearchType } from "@/server/api/routers/search_utils";
+import { type ValidSearchType } from "@/server/api/routers/search_utils";
 import { Tabs, Tab } from "@nextui-org/tabs";
-import { Key, useState } from "react";
+import { type Key, useState } from "react";
 export default function SearchSelection({
   UpdateFunc,
 }: {

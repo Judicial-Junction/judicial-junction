@@ -1,6 +1,6 @@
 "use client";
 import { trpc } from "@/app/_trpc/client";
-import { ValidSearchType } from "@/server/api/routers/search_utils";
+import { type ValidSearchType } from "@/server/api/routers/search_utils";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { Textarea } from "@nextui-org/input";
@@ -8,7 +8,7 @@ import { useState } from "react";
 import ExampleQuery from "./example";
 import SearchSelection from "./selection";
 import Response from "./response";
-import { FormEvent } from "react";
+import { type FormEvent } from "react";
 import SearchLoading from "./loading";
 
 export default function SearchText() {
