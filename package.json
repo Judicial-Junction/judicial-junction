@@ -24,6 +24,7 @@
     "@nextui-org/react": "^2.2.9",
     "@nextui-org/spinner": "^2.0.24",
     "@nextui-org/tabs": "^2.0.26",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@t3-oss/env-nextjs": "^0.7.0",
     "@tanstack/react-query": "^4.35.3",
     "@trpc/client": "^10.38.3",
