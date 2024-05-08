@@ -53,6 +53,9 @@ dependencies:
   "@trpc/server":
     specifier: ^10.38.3
     version: 10.38.3
+  class-variance-authority:
+    specifier: ^0.7.0
+    version: 0.7.0
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
@@ -62,6 +65,9 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  lucide-react:
+    specifier: ^0.378.0
+    version: 0.378.0(react@18.2.0)
   next:
     specifier: 14.0.3
     version: 14.0.3(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
@@ -83,9 +89,15 @@ dependencies:
   superjson:
     specifier: ^1.13.3
     version: 1.13.3
+  tailwind-merge:
+    specifier: ^2.3.0
+    version: 2.3.0
   tailwind-variants:
     specifier: ^0.1.14
     version: 0.1.14(tailwindcss@3.3.3)
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.3.3)
   zod:
     specifier: ^3.22.2
     version: 3.22.2
@@ -1926,6 +1938,16 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.0
     dev: true
+
+  /@babel/runtime@7.24.5:
+    resolution:
+      {
+        integrity: sha512-Nms86NXrsaeU9vbBJKni6gXiEXZ4CVpYVzEjDH9Sb8vmZ3UljyA1GSOJl/6LGPO8EHLuSF9H+IxNXHPX8QHJ4g==,
+      }
+    engines: { node: ">=6.9.0" }
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/template@7.23.9:
     resolution:
@@ -7734,6 +7756,15 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
+  /class-variance-authority@0.7.0:
+    resolution:
+      {
+        integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==,
+      }
+    dependencies:
+      clsx: 2.0.0
+    dev: false
+
   /cli-boxes@3.0.0:
     resolution:
       {
@@ -10858,6 +10889,17 @@ packages:
     engines: { node: ">=12" }
     dev: true
 
+  /lucide-react@0.378.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-u6EPU8juLUk9ytRcyapkWI18epAv3RU+6+TC23ivjR0e+glWKBobFeSgRwOIJihzktILQuy6E0E80P2jVTDR5g==,
+      }
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /md5@2.3.0:
     resolution:
       {
@@ -13030,6 +13072,15 @@ packages:
       }
     dev: false
 
+  /tailwind-merge@2.3.0:
+    resolution:
+      {
+        integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==,
+      }
+    dependencies:
+      "@babel/runtime": 7.24.5
+    dev: false
+
   /tailwind-variants@0.1.14(tailwindcss@3.3.3):
     resolution:
       {
@@ -13053,6 +13104,17 @@ packages:
       tailwindcss: "*"
     dependencies:
       tailwind-merge: 1.14.0
+      tailwindcss: 3.3.3
+    dev: false
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.3.3):
+    resolution:
+      {
+        integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==,
+      }
+    peerDependencies:
+      tailwindcss: ">=3.0.0 || insiders"
+    dependencies:
       tailwindcss: 3.3.3
     dev: false
 
