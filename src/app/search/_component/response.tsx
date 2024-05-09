@@ -44,9 +44,14 @@ export default function Response({ data }: { data: SearchResponse[] }) {
               target="_blank"
               href={result.fields["Judgement PDF URL"][0]}
             >
-              click here
+              Source
             </Link>
-            <ChatDialog />
+            {result.fields["Judgement Text"] && (
+              <ChatDialog
+                CaseTitle={result.fields["Case Title"][0]}
+                CaseText={result.fields["Judgement Text"][0]}
+              />
+            )}
           </div>
           <div>
             <h1 className="flex items-start bg-indigo-100 text-xl font-bold">
