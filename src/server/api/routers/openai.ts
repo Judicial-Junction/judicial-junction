@@ -24,15 +24,23 @@ export const openai_router = createTRPCRouter({
   }),
   ChatWithCase: publicProcedure
     .input(
-      z.array(
-        z.object({ role: z.enum(["system", "user"]), content: z.string() }),
-      ),
+      z.object({
+        messages: z.array(
+          z.object({ role: z.enum(["system", "user"]), content: z.string() }),
+        ),
+        caseText: z.string(),
+      }),
     )
     .query(async ({ input }) => {
+      const initialMessage = {
+        role: "user" as const,
+        content: `below given is the case text of a high court case. \n ${input.caseText} \n\n Now answer me the questions that I have which are related to the given case text. If you cannot provide answer to any question due to insufficient context then just say I don't know.`,
+      };
+      input.messages[0] = initialMessage;
       try {
         const response = await openai.chat.completions.create({
-          model: "gpt-3.5-turbo",
-          messages: input,
+          model: "gpt-4-1106-preview",
+          messages: input.messages,
         });
 
         return response.choices[0].message.content;
