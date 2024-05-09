@@ -31,7 +31,7 @@ export const openai_router = createTRPCRouter({
         caseText: z.string(),
       }),
     )
-    .query(async ({ input }) => {
+    .mutation(async ({ input }) => {
       const initialMessage = {
         role: "user" as const,
         content: `below given is the case text of a high court case. \n ${input.caseText} \n\n Now answer me the questions that I have which are related to the given case text. If you cannot provide answer to any question due to insufficient context then just say I don't know.`,
@@ -42,7 +42,6 @@ export const openai_router = createTRPCRouter({
           model: "gpt-4-1106-preview",
           messages: input.messages,
         });
-
         return response.choices[0].message.content;
       } catch (error) {
         console.log(error);
