@@ -38,6 +38,12 @@ const ChatDialog: FC<ChatDialogProps> = () => {
     event.preventDefault();
     if (input === "") return;
     setmessages((prev) => [...prev, { owner: Creator.User, text: input }]);
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    setmessages((prev) => [
+      ...prev,
+      { owner: Creator.System, text: "thinking......." },
+    ]);
+    setmessages((prev) => prev.slice(0, -1));
     setinput("");
   };
 
