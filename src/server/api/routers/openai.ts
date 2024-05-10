@@ -47,7 +47,8 @@ export const openai_router = createTRPCRouter({
         console.log(error);
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "problem with openai chat endpoint",
+          // @ts-expect-error accessing message
+          message: `problem with openai chat endpoint : \n${error?.message}`,
         });
       }
     }),

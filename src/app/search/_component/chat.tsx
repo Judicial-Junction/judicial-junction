@@ -51,7 +51,7 @@ const ChatDialog: FC<ChatDialogProps> = (props) => {
       setmessages((prev) => prev.slice(0, -1));
       setmessages((prev) => [
         ...prev,
-        { role: "system", content: `Error occured \n ${error.message}` },
+        { role: "system", content: `Error occured, ${error.message}` },
       ]);
     },
     onSettled: () => {
