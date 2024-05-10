@@ -1,9 +1,9 @@
 interface SearchResponseFields {
-  "Judgement PDF URL": string[];
-  "Case Number": string[];
-  "Judgement Date": string[];
-  "Case Title": string[];
-  "Judgement Text"?: string[];
+  "Judgement PDF URL": string;
+  "Case Number": string;
+  "Judgement Date": string;
+  "Case Title": string;
+  "Judgement Text": string;
   Sentences?: [string, string, string, string, string];
 }
 
