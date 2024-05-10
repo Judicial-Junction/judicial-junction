@@ -42,20 +42,20 @@ export default function Response({ data }: { data: SearchResponse[] }) {
             <Link
               className="text-blue-500"
               target="_blank"
-              href={result.fields["Judgement PDF URL"][0]}
+              href={result.fields["Judgement PDF URL"]}
             >
               Source
             </Link>
             {result.fields["Judgement Text"] && (
               <ChatDialog
-                CaseTitle={result.fields["Case Title"][0]}
-                CaseText={result.fields["Judgement Text"][0]}
+                CaseTitle={result.fields["Case Title"]}
+                CaseText={result.fields["Judgement Text"]}
               />
             )}
           </div>
           <div>
             <h1 className="flex items-start bg-indigo-100 text-xl font-bold">
-              {result.fields["Case Title"][0]}
+              {result.fields["Case Title"]}
             </h1>
           </div>
           {result.fields["Judgement Text"] &&
@@ -65,21 +65,21 @@ export default function Response({ data }: { data: SearchResponse[] }) {
                   {"..." +
                     GetFuzzySentence(
                       result.search_query,
-                      result.fields["Judgement Text"][0],
+                      result.fields["Judgement Text"],
                     )[0] +
                     " "}
                   <mark className="bg-slate-900 text-white">
                     {
                       GetFuzzySentence(
                         result.search_query,
-                        result.fields["Judgement Text"][0],
+                        result.fields["Judgement Text"],
                       )[1]
                     }
                   </mark>
                   {" " +
                     GetFuzzySentence(
                       result.search_query,
-                      result.fields["Judgement Text"][0],
+                      result.fields["Judgement Text"],
                     )[2] +
                     "..."}
                 </p>
