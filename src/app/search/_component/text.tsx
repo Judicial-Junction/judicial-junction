@@ -13,8 +13,7 @@ import SearchSelection from "./selection";
 export default function SearchText() {
   const mut = trpc.search_router.opensearch.useMutation();
   const [input, setinput] = useState("");
-  const [searchType, setSearchType] =
-    useState<ValidSearchType>("Semantic Search");
+  const [searchType, setSearchType] = useState<ValidSearchType>("Fuzzy Search");
   // const [cases, setcases] = useState((mut.data || []) as any[]);
 
   const HandleSubmit = async (event: FormEvent<HTMLFormElement>) => {

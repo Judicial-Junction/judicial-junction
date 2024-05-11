@@ -26,7 +26,6 @@ export default function SearchSelection({
     >
       <Tab key="Fuzzy Search" title="Keyword search"></Tab>
       <Tab key="Sentence Similarity" title="Sentence similarity"></Tab>
-      <Tab key="Semantic Search" title="Semantic search"></Tab>
     </Tabs>
   );
 }

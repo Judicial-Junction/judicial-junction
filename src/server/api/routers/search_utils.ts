@@ -3,14 +3,11 @@ interface SearchResponseFields {
   "Case Number": string[];
   "Judgement Date": string[];
   "Case Title": string[];
-  "Judgement Text"?: string[];
+  "Judgement Text": string[];
   Sentences?: [string, string, string, string, string];
 }
 
-export type ValidSearchType =
-  | "Fuzzy Search"
-  | "Sentence Similarity"
-  | "Semantic Search";
+export type ValidSearchType = "Fuzzy Search" | "Sentence Similarity";
 
 export interface SearchResponse {
   _id: string;

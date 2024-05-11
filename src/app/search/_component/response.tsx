@@ -2,6 +2,7 @@ import { type SearchResponse } from "@/server/api/routers/search_utils";
 import { Link } from "@nextui-org/link";
 import { closest } from "fastest-levenshtein";
 import { useMemo } from "react";
+import ChatDialog from "./chat";
 
 function FindFuzzyWord(searched_keyword: string, case_text: string) {
   const wordsArray = case_text.split(/\s+/);
@@ -37,18 +38,24 @@ export default function Response({ data }: { data: SearchResponse[] }) {
           className="center w-[1000px] divide-y divide-slate-400 border-1 border-slate-500 shadow-lg"
           key={result._id}
         >
-          <div>
+          <div className="blue-500 flex w-[1000px] space-x-5 bg-indigo-100 text-blue-500">
             <Link
-              className="blue-500 te-200 w-[1000px] bg-indigo-100 text-blue-500"
+              className="text-blue-500"
               target="_blank"
               href={result.fields["Judgement PDF URL"][0]}
             >
-              click here
+              Source
             </Link>
+            {result.fields["Judgement Text"] && (
+              <ChatDialog
+                CaseTitle={result.fields["Case Title"][0]}
+                CaseText={result.fields["Judgement Text"][0]}
+              />
+            )}
           </div>
           <div>
             <h1 className="flex items-start bg-indigo-100 text-xl font-bold">
-              {result.fields["Case Title"][0]}
+              {result.fields["Case Title"]}
             </h1>
           </div>
           {result.fields["Judgement Text"] &&
