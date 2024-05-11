@@ -157,7 +157,7 @@ export default async function FuzzySearchMutation(input: string) {
     query: {
       match: {
         "Judgement Text": {
-          value: remove_stopwords(input),
+          query: remove_stopwords(input),
         },
       },
     },
