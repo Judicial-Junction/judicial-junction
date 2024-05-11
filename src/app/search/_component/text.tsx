@@ -1,7 +1,7 @@
 "use client";
 import { trpc } from "@/app/_trpc/client";
 import { type ValidSearchType } from "@/server/api/routers/search_utils";
-import { Button } from "@nextui-org/button";
+import { Button } from "@/components/ui/button";
 import { Divider } from "@nextui-org/divider";
 import { Textarea } from "@nextui-org/input";
 import { useState, type FormEvent } from "react";
@@ -45,12 +45,7 @@ export default function SearchText() {
           onValueChange={setinput}
         />
         <br />
-        <Button
-          variant="bordered"
-          className="mt-2 "
-          type="submit"
-          color="secondary"
-        >
+        <Button className="mt-2 rounded-xl" type="submit" variant="outline">
           Search
         </Button>
       </form>
